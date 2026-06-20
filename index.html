@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KYP | Know Your Power</title>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'kyp-purple': '#2B003F',
+            'kyp-gold': '#D4AF37',
+            'kyp-black': '#1A1A1A',
+            'kyp-white': '#FFFFFF',
+          }
+        }
+      }
+    }
+  </script>
+  
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .page-section { display: none; opacity: 0; transition: opacity 0.3s ease-in-out; }
+    .page-section.active { display: block; opacity: 1; }
+    
+    /* Hide scrollbar for tabs */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="bg-kyp-white text-kyp-black flex flex-col min-h-screen antialiased">
+  
+  <!-- HEADER & NAVIGATION -->
+  <header class="bg-kyp-purple text-kyp-white py-3 shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center">
+      <a href="#home" class="flex items-center flex-col shrink-0">
+        <div class="flex flex-col items-center">
+          <svg width="45" height="55" viewBox="0 0 100 120" fill="none" class="mb-1">
+            <path d="M50 5 L95 15 V45 C95 85 50 115 50 115 C50 115 5 85 5 45 V15 Z" fill="#2B003F" stroke="#D4AF37" stroke-width="4" stroke-linejoin="round"/>
+            <path d="M48 18 C45 18 45 22 45 24 V30 H40 C37 30 37 33 40 33 C37 33 37 36 40 36 C37 36 37 40 40 40 H38 C35 40 35 43 38 43 V48 H28 L40 65 H32 L48 105 L52 75 H68 L56 50 H65 V36 C65 33 62 30 58 30 C58 26 55 26 52 26 V22 C52 18 48 18 48 18 Z" fill="#D4AF37" stroke="#2B003F" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M40 31 V48 M45 22 V48 M52 26 V48 M58 30 V48" stroke="#2B003F" stroke-width="2" stroke-linecap="round"/>
+            <path d="M35 43 Q45 50 63 45" fill="none" stroke="#2B003F" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <div class="text-kyp-gold font-serif font-black text-xl tracking-widest leading-none mb-1">KYP</div>
+        </div>
+      </a>
+      
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex desktop-nav flex-wrap justify-end space-x-6 text-xs font-bold uppercase tracking-wider">
+        <a href="#home" class="hover:text-kyp-gold transition-colors py-1 border-b-2 border-transparent">Home</a>
+        <a href="#about" class="hover:text-kyp-gold transition-colors py-1 border-b-2 border-transparent">About Us</a>
+        <a href="#manifesto" class="hover:text-kyp-gold transition-colors py-1 border-b-2 border-transparent">Manifesto</a>
+        <a href="#leadership" class="hover:text-kyp-gold transition-colors py-1 border-b-2 border-transparent">Leadership</a>
+        <a href="#media" class="hover:text-kyp-gold transition-colors py-1 border-b-2 border-transparent">Media</a>
+        <a href="#activities" class="hover:text-kyp-gold transition-colors py-1 border-b-2 border-transparent">Activities</a>
+        <a href="#partnership" class="hover:text-kyp-gold transition-colors py-1 border-b-2 border-transparent">Partnership</a>
+        <a href="#contact" class="hover:text-kyp-gold transition-colors py-1 border-b-2 border-transparent">Contact Us</a>
+      </nav>
+      
+      <!-- Mobile Menu Toggle -->
+      <button class="lg:hidden text-kyp-gold" onclick="document.getElementById('mobile-nav').classList.toggle('hidden')">
+        <i data-lucide="menu" class="w-8 h-8"></i>
+      </button>
+    </div>
+    
+    <!-- Mobile Nav -->
+    <div id="mobile-nav" class="hidden lg:hidden bg-[#1D002A] border-t border-white/10 absolute top-full left-0 w-full shadow-2xl">
+      <nav class="flex flex-col text-sm font-bold uppercase tracking-wider text-white">
+        <a href="#home" class="p-4 border-b border-white/5" onclick="toggleMobileNav()">Home</a>
+        <a href="#about" class="p-4 border-b border-white/5" onclick="toggleMobileNav()">About Us</a>
+        <a href="#manifesto" class="p-4 border-b border-white/5" onclick="toggleMobileNav()">Manifesto</a>
+        <a href="#leadership" class="p-4 border-b border-white/5" onclick="toggleMobileNav()">Leadership</a>
+        <a href="#media" class="p-4 border-b border-white/5" onclick="toggleMobileNav()">Media</a>
+        <a href="#activities" class="p-4 border-b border-white/5" onclick="toggleMobileNav()">Activities</a>
+        <a href="#partnership" class="p-4 border-b border-white/5" onclick="toggleMobileNav()">Partnership</a>
+        <a href="#contact" class="p-4 border-b border-white/5" onclick="toggleMobileNav()">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="app-container" class="flex-grow bg-gray-50/50">
+    
+    <!-- PAGE 4: HOME -->
+    <section id="page-home" class="page-section active">
+      <!-- Hero -->
+      <div class="relative w-full py-32 md:py-48 px-4 text-center bg-cover bg-center overflow-hidden" style="background-image: url('https://images.unsplash.com/photo-1541872526845-a9b81f185df1?auto=format&fit=crop&q=80&w=1600')">
+        <div class="absolute inset-0 bg-kyp-purple/80 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-kyp-purple to-transparent opacity-90"></div>
+        <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
+          <h1 class="text-4xl md:text-5xl lg:text-7xl font-black mb-4 tracking-widest text-kyp-white uppercase">KNOW YOUR POWER</h1>
+          <div class="w-24 h-1 lg:h-2 bg-kyp-gold rounded-full mb-8"></div>
+          <p class="text-lg md:text-xl font-medium mb-12 space-y-1 text-kyp-white/90">
+            <span class="block">Empowering Citizens.</span>
+            <span class="block">Building Ethical Leadership.</span>
+            <span class="block">Creating Opportunities for All.</span>
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 w-full max-w-md mx-auto">
+            <a href="#membership" class="bg-kyp-gold text-kyp-black font-bold py-3 px-8 rounded hover:bg-white transition-colors uppercase tracking-wider text-sm flex-1">JOIN KYP</a>
+            <a href="#manifesto" class="border-2 border-kyp-gold text-kyp-gold font-bold py-3 px-8 rounded hover:bg-kyp-gold hover:text-kyp-black transition-colors uppercase tracking-wider text-sm flex-1">READ MANIFESTO</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Split Content: News & Activities -->
+      <div class="max-w-7xl mx-auto px-4 md:px-8 py-16 grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Latest News -->
+        <div>
+          <h2 class="text-sm font-bold text-gray-400 mb-4 uppercase tracking-widest border-b border-gray-200 pb-2">LATEST NEWS</h2>
+          <div class="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden group mb-8">
+            <div class="h-64 overflow-hidden relative">
+              <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            </div>
+            <div class="p-6">
+               <h3 class="font-bold text-xl text-kyp-purple mb-2">Campaign Launch in Gauteng</h3>
+               <p class="text-sm text-gray-500 mb-4">A tremendous turnout yesterday as the KYP national committee outlined key strategies for economic development and community safety.</p>
+               <a href="#media" class="text-sm text-kyp-gold font-bold flex items-center hover:text-kyp-purple transition-colors">Read More <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></a>
+            </div>
+          </div>
+          
+          <h2 class="text-sm font-bold text-gray-400 mb-4 uppercase tracking-widest border-b border-gray-200 pb-2">FOLLOW US</h2>
+          <div class="flex space-x-4">
+             <a href="#" class="w-10 h-10 bg-kyp-purple text-kyp-gold rounded-full flex items-center justify-center hover:bg-kyp-gold hover:text-kyp-purple transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+             <a href="#" class="w-10 h-10 bg-kyp-purple text-kyp-gold rounded-full flex items-center justify-center hover:bg-kyp-gold hover:text-kyp-purple transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+             <a href="#" class="w-10 h-10 bg-kyp-purple text-kyp-gold rounded-full flex items-center justify-center hover:bg-kyp-gold hover:text-kyp-purple transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+             <a href="#" class="w-10 h-10 bg-kyp-purple text-kyp-gold rounded-full flex items-center justify-center hover:bg-kyp-gold hover:text-kyp-purple transition-colors"><i data-lucide="youtube" class="w-5 h-5"></i></a>
+          </div>
+        </div>
+        
+        <!-- Upcoming Activities -->
+        <div>
+          <h2 class="text-sm font-bold text-gray-400 mb-4 uppercase tracking-widest border-b border-gray-200 pb-2">UPCOMING ACTIVITIES</h2>
+          <div class="space-y-4">
+             <div class="flex bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden group">
+               <div class="bg-kyp-purple text-kyp-gold w-24 shrink-0 flex flex-col items-center justify-center p-4">
+                 <span class="text-2xl font-black leading-none">25</span>
+                 <span class="text-xs uppercase font-bold tracking-widest opacity-80 mt-1">Jun</span>
+               </div>
+               <div class="p-5 flex-grow">
+                 <h4 class="font-bold text-gray-900 group-hover:text-kyp-purple transition-colors mb-1">Youth Empowerment Summit</h4>
+                 <p class="text-xs text-gray-500 flex items-center"><i data-lucide="map-pin" class="w-3 h-3 mr-1"></i> Johannesburg</p>
+               </div>
+             </div>
+             <div class="flex bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden group">
+               <div class="bg-kyp-purple text-kyp-gold w-24 shrink-0 flex flex-col items-center justify-center p-4">
+                 <span class="text-2xl font-black leading-none">10</span>
+                 <span class="text-xs uppercase font-bold tracking-widest opacity-80 mt-1">Jul</span>
+               </div>
+               <div class="p-5 flex-grow">
+                 <h4 class="font-bold text-gray-900 group-hover:text-kyp-purple transition-colors mb-1">Community Outreach Programme</h4>
+                 <p class="text-xs text-gray-500 flex items-center"><i data-lucide="map-pin" class="w-3 h-3 mr-1"></i> Pretoria</p>
+               </div>
+             </div>
+             <div class="flex bg-white rounded-lg border border-gray-100 shadow-sm overflow-hidden group">
+               <div class="bg-kyp-purple text-kyp-gold w-24 shrink-0 flex flex-col items-center justify-center p-4">
+                 <span class="text-2xl font-black leading-none">22</span>
+                 <span class="text-xs uppercase font-bold tracking-widest opacity-80 mt-1">Aug</span>
+               </div>
+               <div class="p-5 flex-grow">
+                 <h4 class="font-bold text-gray-900 group-hover:text-kyp-purple transition-colors mb-1">Women in Leadership Workshop</h4>
+                 <p class="text-xs text-gray-500 flex items-center"><i data-lucide="map-pin" class="w-3 h-3 mr-1"></i> Cape Town</p>
+               </div>
+             </div>
+          </div>
+          <a href="#activities" class="mt-6 block text-center py-3 border border-kyp-purple text-kyp-purple hover:bg-kyp-purple hover:text-kyp-white transition-colors rounded font-bold text-xs uppercase tracking-wider">
+            View All Activities
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAGE 5: ABOUT US -->
+    <section id="page-about" class="page-section">
+      <div class="bg-kyp-purple text-kyp-white py-12 px-4 shadow-inner">
+         <div class="max-w-7xl mx-auto">
+            <h1 class="text-3xl font-black uppercase tracking-widest border-b-[3px] border-kyp-gold pb-2 inline-block">ABOUT KYP</h1>
+         </div>
+      </div>
+      
+      <div class="max-w-7xl mx-auto px-4 md:px-8 py-16 grid grid-cols-1 md:grid-cols-2 gap-16">
+         <!-- Left Col Info -->
+         <div>
+            <p class="text-lg font-medium leading-relaxed mb-10 text-gray-700">
+               Know Your Power (KYP) is a movement dedicated to empowering communities, building ethical leadership and creating a better future for all South Africans.
+            </p>
+            
+            <ul class="space-y-6">
+               <li class="flex items-start">
+                  <div class="mt-1 bg-kyp-gold rounded-full p-1 mr-4 shrink-0"><i data-lucide="check" class="w-4 h-4 text-kyp-purple"></i></div>
+                  <div>
+                     <h4 class="font-bold text-lg mb-1 text-kyp-black uppercase tracking-wide">Who We Are</h4>
+                     <p class="text-sm text-gray-600">A collective of diverse citizens committed to real, verifiable socio-economic change across all 9 provinces.</p>
+                  </div>
+               </li>
+               <li class="flex items-start">
+                  <div class="mt-1 bg-kyp-gold rounded-full p-1 mr-4 shrink-0"><i data-lucide="check" class="w-4 h-4 text-kyp-purple"></i></div>
+                  <div>
+                     <h4 class="font-bold text-lg mb-1 text-kyp-black uppercase tracking-wide">Mission</h4>
+                     <p class="text-sm text-gray-600">To secure sustainable community wealth structures and combat corruption at all infrastructural levels.</p>
+                  </div>
+               </li>
+               <li class="flex items-start">
+                  <div class="mt-1 bg-kyp-gold rounded-full p-1 mr-4 shrink-0"><i data-lucide="check" class="w-4 h-4 text-kyp-purple"></i></div>
+                  <div>
+                     <h4 class="font-bold text-lg mb-1 text-kyp-black uppercase tracking-wide">Vision</h4>
+                     <p class="text-sm text-gray-600">A unified state where the constitutional power truly resides within informed communities.</p>
+                  </div>
+               </li>
+               <li class="flex items-start">
+                  <div class="mt-1 bg-kyp-gold rounded-full p-1 mr-4 shrink-0"><i data-lucide="check" class="w-4 h-4 text-kyp-purple"></i></div>
+                  <div>
+                     <h4 class="font-bold text-lg mb-1 text-kyp-black uppercase tracking-wide">Values</h4>
+                     <p class="text-sm text-gray-600">Transparency, Ethical Governance, Uncompromised Integrity, and Respect.</p>
+                  </div>
+               </li>
+            </ul>
+         </div>
+         
+         <!-- Right Col Grid -->
+         <div class="grid grid-cols-2 gap-4 h-fit">
+            <img src="https://images.unsplash.com/photo-1541872526845-a9b81f185df1?w=400&h=400&fit=crop" class="w-full h-48 object-cover rounded shadow-md border-b-4 border-kyp-purple"/>
+            <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=400&h=400&fit=crop" class="w-full h-48 object-cover rounded shadow-md border-b-4 border-kyp-gold"/>
+            <img src="https://images.unsplash.com/photo-1511632765486-a01c80cf8cb4?w=400&h=400&fit=crop" class="w-full h-48 object-cover rounded shadow-md border-b-4 border-kyp-gold"/>
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop" class="w-full h-48 object-cover rounded shadow-md border-b-4 border-kyp-purple"/>
+         </div>
+      </div>
+      
+      <!-- Values Icons Bottom Row -->
+      <div class="bg-white border-y border-gray-200">
+         <div class="max-w-5xl mx-auto px-4 py-16 grid grid-cols-2 lg:grid-cols-5 gap-8 text-center">
+            <div class="flex flex-col items-center">
+               <i data-lucide="shield-check" class="w-12 h-12 text-kyp-purple mb-4"></i>
+               <span class="text-xs font-bold uppercase tracking-widest text-kyp-black">ACCOUNTABILITY</span>
+            </div>
+            <div class="flex flex-col items-center">
+               <i data-lucide="hand-heart" class="w-12 h-12 text-kyp-purple mb-4"></i>
+               <span class="text-xs font-bold uppercase tracking-widest text-kyp-black">SERVICE</span>
+            </div>
+            <div class="flex flex-col items-center">
+               <i data-lucide="users" class="w-12 h-12 text-kyp-purple mb-4"></i>
+               <span class="text-xs font-bold uppercase tracking-widest text-kyp-black">UNITY</span>
+            </div>
+            <div class="flex flex-col items-center">
+               <i data-lucide="target" class="w-12 h-12 text-kyp-purple mb-4"></i>
+               <span class="text-xs font-bold uppercase tracking-widest text-kyp-black">LEADERSHIP</span>
+            </div>
+            <div class="flex flex-col items-center lg:col-span-1 col-span-2">
+               <i data-lucide="zap" class="w-12 h-12 text-kyp-purple mb-4"></i>
+               <span class="text-xs font-bold uppercase tracking-widest text-kyp-black">EMPOWERMENT</span>
+            </div>
+         </div>
+      </div>
+    </section>
+
+    <!-- PAGE 6: MANIFESTO -->
+    <section id="page-manifesto" class="page-section">
+      <div class="bg-kyp-purple text-kyp-white py-12 px-4 shadow-inner">
+         <div class="max-w-7xl mx-auto">
+            <h1 class="text-3xl font-black uppercase tracking-widest border-b-[3px] border-kyp-gold pb-2 inline-block">MANIFESTO</h1>
+         </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 md:px-8 py-16 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+         <div class="bg-white p-8 md:p-12 shadow-xl border border-gray-100 rounded-lg">
+            <h2 class="text-2xl font-bold text-kyp-purple mb-6 uppercase tracking-wider">OUR MANIFESTO</h2>
+            <ul class="space-y-5 mb-10">
+               <li class="flex items-center text-sm font-bold text-gray-800 uppercase tracking-wide">
+                  <div class="w-8 h-8 rounded shrink-0 bg-gray-100 flex items-center justify-center mr-4"><i data-lucide="book" class="w-4 h-4 text-kyp-purple"></i></div> Introduction
+               </li>
+               <li class="flex items-center text-sm font-bold text-gray-800 uppercase tracking-wide">
+                  <div class="w-8 h-8 rounded shrink-0 bg-gray-100 flex items-center justify-center mr-4"><i data-lucide="trending-up" class="w-4 h-4 text-kyp-purple"></i></div> Economic Development
+               </li>
+               <li class="flex items-center text-sm font-bold text-gray-800 uppercase tracking-wide">
+                  <div class="w-8 h-8 rounded shrink-0 bg-gray-100 flex items-center justify-center mr-4"><i data-lucide="award" class="w-4 h-4 text-kyp-purple"></i></div> Youth Empowerment
+               </li>
+               <li class="flex items-center text-sm font-bold text-gray-800 uppercase tracking-wide">
+                  <div class="w-8 h-8 rounded shrink-0 bg-gray-100 flex items-center justify-center mr-4"><i data-lucide="graduation-cap" class="w-4 h-4 text-kyp-purple"></i></div> Education
+               </li>
+               <li class="flex items-center text-sm font-bold text-gray-800 uppercase tracking-wide">
+                  <div class="w-8 h-8 rounded shrink-0 bg-gray-100 flex items-center justify-center mr-4"><i data-lucide="briefcase" class="w-4 h-4 text-kyp-purple"></i></div> Job Creation
+               </li>
+               <li class="flex items-center text-sm font-bold text-gray-800 uppercase tracking-wide">
+                  <div class="w-8 h-8 rounded shrink-0 bg-gray-100 flex items-center justify-center mr-4"><i data-lucide="shield" class="w-4 h-4 text-kyp-purple"></i></div> Community Safety
+               </li>
+               <li class="flex items-center text-sm font-bold text-gray-800 uppercase tracking-wide">
+                  <div class="w-8 h-8 rounded shrink-0 bg-gray-100 flex items-center justify-center mr-4"><i data-lucide="scale" class="w-4 h-4 text-kyp-purple"></i></div> Good Governance
+               </li>
+            </ul>
+            <button class="w-full md:w-auto bg-kyp-gold text-kyp-black font-bold py-4 px-8 rounded hover:bg-kyp-purple hover:text-white transition-colors uppercase tracking-wider text-sm flex justify-center items-center">
+               <i data-lucide="download" class="w-4 h-4 mr-2"></i> DOWNLOAD MANIFESTO PDF
+            </button>
+         </div>
+
+         <div class="flex justify-center perspective-1000 hidden md:flex">
+            <!-- 3D Book representation -->
+            <div class="w-64 aspect-[3/4] bg-kyp-purple rounded-r-lg shadow-2xl relative transform rotate-y-[-10deg] rotate-x-[5deg] scale-110 border-l-[16px] border-black/30 overflow-hidden flex flex-col justify-between p-6 pb-8">
+               <div class="absolute inset-0 bg-gradient-to-tr from-kyp-purple to-[#3D0059]"></div>
+               <div class="relative z-10 flex flex-col items-center mt-6">
+                  <!-- Abstract Badge -->
+                  <div class="w-20 h-24 border-2 border-kyp-gold rounded-full flex items-center justify-center mb-6 px-1">
+                     <i data-lucide="hand-metal" class="w-10 h-10 text-kyp-gold"></i>
+                  </div>
+                  <h3 class="text-kyp-gold text-4xl font-serif font-black tracking-widest text-center">KYP</h3>
+                  <h4 class="text-white text-xl font-medium tracking-widest text-center mt-2 uppercase">MANIFESTO</h4>
+               </div>
+               <div class="relative z-10 w-full text-center border-t border-kyp-gold/30 pt-4 mt-auto">
+                  <span class="text-kyp-gold text-[10px] font-bold tracking-widest uppercase">KNOW YOUR POWER</span>
+               </div>
+               <!-- Glare overlay -->
+               <div class="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent pointer-events-none"></div>
+            </div>
+         </div>
+      </div>
+    </section>
+
+    <!-- PAGE 7: LEADERSHIP -->
+    <section id="page-leadership" class="page-section">
+      <div class="bg-kyp-purple text-kyp-white py-12 px-4 shadow-inner">
+         <div class="max-w-7xl mx-auto">
+            <h1 class="text-3xl font-black uppercase tracking-widest border-b-[3px] border-kyp-gold pb-2 inline-block">OUR LEADERSHIP</h1>
+         </div>
+      </div>
+      
+      <div class="max-w-7xl mx-auto px-4 md:px-8 py-16 flex flex-col lg:flex-row gap-12">
+         <!-- Left Sidebar menu metaphor -->
+         <div class="lg:w-1/4">
+            <div class="bg-white rounded border border-gray-100 shadow-sm p-4">
+               <ul class="space-y-3 font-bold text-sm tracking-wide text-gray-700">
+                  <li class="flex items-center text-kyp-purple"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-kyp-gold"></i> President</li>
+                  <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-kyp-purple"></i> Deputy President</li>
+                  <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-kyp-purple"></i> National Chairperson</li>
+                  <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-kyp-purple"></i> Treasurer General</li>
+                  <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-kyp-purple"></i> NEC Members</li>
+                  <li class="flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2 text-kyp-purple"></i> Provincial Leadership (9)</li>
+               </ul>
+               <p class="mt-6 text-xs text-gray-400 font-medium italic"><i data-lucide="info" class="w-4 h-4 inline mr-1"></i> Click on a leader to view full profile, responsibilities, activities and more.</p>
+            </div>
+         </div>
+         
+         <!-- Leadership Grid -->
+         <div class="lg:w-3/4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 text-center">
+               <!-- Card 1 -->
+               <div class="bg-white border border-gray-100 rounded shadow-sm p-4 hover:shadow-md transition-shadow cursor-pointer">
+                  <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=300" class="w-full aspect-square object-cover rounded-full border-4 border-gray-50 mb-4 mx-auto max-w-[200px]" />
+                  <h4 class="font-bold text-gray-900 tracking-wide">Prof. X. Zwane</h4>
+                  <p class="text-xs font-bold text-kyp-gold mt-1 uppercase tracking-widest">PRESIDENT</p>
+               </div>
+               <!-- Card 2 -->
+               <div class="bg-white border border-gray-100 rounded shadow-sm p-4 hover:shadow-md transition-shadow cursor-pointer">
+                  <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=300" class="w-full aspect-square object-cover rounded-full border-4 border-gray-50 mb-4 mx-auto max-w-[200px]" />
+                  <h4 class="font-bold text-gray-900 tracking-wide">Dr. L. Mokoena</h4>
+                  <p class="text-xs font-bold text-kyp-gold mt-1 uppercase tracking-widest">DEPUTY PRESIDENT</p>
+               </div>
+               <!-- Card 3 -->
+               <div class="bg-white border border-gray-100 rounded shadow-sm p-4 hover:shadow-md transition-shadow cursor-pointer">
+                  <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=300" class="w-full aspect-square object-cover rounded-full border-4 border-gray-50 mb-4 mx-auto max-w-[200px]" />
+                  <h4 class="font-bold text-gray-900 tracking-wide">Mr. S. Naidoo</h4>
+                  <p class="text-xs font-bold text-kyp-gold mt-1 uppercase tracking-widest">NATIONAL CHAIRPERSON</p>
+               </div>
+               <!-- Card 4 -->
+               <div class="bg-white border border-gray-100 rounded shadow-sm p-4 hover:shadow-md transition-shadow cursor-pointer">
+                  <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=300" class="w-full aspect-square object-cover rounded-full border-4 border-gray-50 mb-4 mx-auto max-w-[200px]" />
+                  <h4 class="font-bold text-gray-900 tracking-wide">Mrs. C. Jacobs</h4>
+                  <p class="text-xs font-bold text-kyp-gold mt-1 uppercase tracking-widest">TREASURER GENERAL</p>
+               </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+               <button class="bg-white border border-gray-300 py-4 font-bold tracking-widest uppercase hover:bg-gray-50 transition-colors shadow-sm text-sm">
+                  NEC MEMBERS
+               </button>
+               <button class="bg-white border border-gray-300 py-4 font-bold tracking-widest uppercase hover:bg-gray-50 transition-colors shadow-sm text-sm">
+                  PROVINCIAL LEADERSHIP
+               </button>
+            </div>
+         </div>
+      </div>
+    </section>
+
+    <!-- PAGE 8: MEDIA CENTRE -->
+    <section id="page-media" class="page-section">
+      <div class="bg-kyp-purple text-kyp-white py-12 px-4 shadow-inner">
+         <div class="max-w-7xl mx-auto">
+            <h1 class="text-3xl font-black uppercase tracking-widest border-b-[3px] border-kyp-gold pb-2 inline-block">MEDIA CENTRE</h1>
+         </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 md:px-8 py-16">
+         <!-- Tabs (visual only for template representation) -->
+         <div class="flex overflow-x-auto no-scrollbar border-b border-gray-200 mb-8 pb-1 space-x-8 text-sm font-bold tracking-widest uppercase">
+            <button class="pb-3 border-b-2 border-kyp-gold text-kyp-purple shrink-0">DAILY REPORTS</button>
+            <button class="pb-3 border-b-2 border-transparent text-gray-400 hover:text-gray-900 shrink-0">IMAGES</button>
+            <button class="pb-3 border-b-2 border-transparent text-gray-400 hover:text-gray-900 shrink-0">VIDEOS</button>
+            <button class="pb-3 border-b-2 border-transparent text-gray-400 hover:text-gray-900 shrink-0">NEWS & ANNOUNCEMENTS</button>
+         </div>
+
+         <!-- Media Grid -->
+         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div class="bg-white border border-gray-100 rounded overflow-hidden shadow-sm group">
+               <div class="h-48 relative">
+                  <img src="https://images.unsplash.com/photo-1541872526845-a9b81f185df1?w=600&h=400&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                  <div class="absolute inset-0 bg-black/20"></div>
+                  <i data-lucide="file-text" class="absolute bottom-4 left-4 text-white w-6 h-6"></i>
+               </div>
+               <div class="p-4">
+                  <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider mb-1">June 20, 2026</p>
+                  <h4 class="font-bold text-gray-900 line-clamp-2">Daily Dispatch: Branch Mobilization Report</h4>
+               </div>
+            </div>
+            <div class="bg-white border border-gray-100 rounded overflow-hidden shadow-sm group">
+               <div class="h-48 relative">
+                  <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&h=400&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                  <div class="absolute inset-0 bg-black/20"></div>
+                  <i data-lucide="play-circle" class="absolute inset-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/90 w-12 h-12"></i>
+               </div>
+               <div class="p-4">
+                  <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider mb-1">June 18, 2026</p>
+                  <h4 class="font-bold text-gray-900 line-clamp-2">Presidential Address on Ethical Governance</h4>
+               </div>
+            </div>
+            <div class="bg-white border border-gray-100 rounded overflow-hidden shadow-sm group">
+               <div class="h-48 relative">
+                  <img src="https://images.unsplash.com/photo-1511632765486-a01c80cf8cb4?w=600&h=400&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform" />
+                  <div class="absolute inset-0 bg-black/20"></div>
+                  <i data-lucide="image" class="absolute bottom-4 left-4 text-white w-6 h-6"></i>
+               </div>
+               <div class="p-4">
+                  <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider mb-1">June 15, 2026</p>
+                  <h4 class="font-bold text-gray-900 line-clamp-2">Youth Summit Pre-event Gallery</h4>
+               </div>
+            </div>
+            <!-- Extra placeholders -->
+            <div class="bg-white border border-gray-100 rounded overflow-hidden shadow-sm group">
+               <div class="bg-gray-100 h-48 animate-pulse"></div>
+               <div class="p-4"><div class="h-4 bg-gray-100 w-1/3 mb-2"></div><div class="h-5 bg-gray-100 w-3/4"></div></div>
+            </div>
+            <div class="bg-white border border-gray-100 rounded overflow-hidden shadow-sm group">
+               <div class="bg-gray-100 h-48 animate-pulse"></div>
+               <div class="p-4"><div class="h-4 bg-gray-100 w-1/3 mb-2"></div><div class="h-5 bg-gray-100 w-3/4"></div></div>
+            </div>
+            <div class="bg-white border border-gray-100 rounded overflow-hidden shadow-sm group">
+               <div class="bg-gray-100 h-48 animate-pulse"></div>
+               <div class="p-4"><div class="h-4 bg-gray-100 w-1/3 mb-2"></div><div class="h-5 bg-gray-100 w-3/4"></div></div>
+            </div>
+         </div>
+      </div>
+    </section>
+
+    <!-- PAGE 9: ACTIVITIES -->
+    <section id="page-activities" class="page-section">
+      <div class="bg-kyp-purple text-kyp-white py-12 px-4 shadow-inner">
+         <div class="max-w-7xl mx-auto flex flex-col justify-end min-h-[60px]">
+            <h1 class="text-3xl font-black uppercase tracking-widest border-b-[3px] border-kyp-gold pb-2 inline-block">ACTIVITIES</h1>
+         </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 md:px-8 py-16">
+         <!-- Upcoming -->
+         <h2 class="text-xl font-bold text-gray-700 uppercase tracking-widest mb-6">UPCOMING ACTIVITIES</h2>
+         
+         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <!-- Event 1 -->
+            <div class="bg-white border border-gray-200 rounded overflow-hidden shadow-sm">
+               <img src="https://images.unsplash.com/photo-1541872526845-a9b81f185df1?w=600&h=300&fit=crop" class="h-40 w-full object-cover grayscale opacity-80 mix-blend-multiply" />
+               <div class="p-6">
+                  <div class="flex items-center space-x-4 mb-4">
+                     <div class="bg-kyp-purple text-white p-2 rounded text-center w-14 shadow-inner">
+                        <div class="font-black text-xl leading-none">25</div>
+                        <div class="text-[9px] font-bold tracking-widest uppercase opacity-90 mt-1">JUN</div>
+                     </div>
+                     <div>
+                        <h4 class="font-bold text-gray-900 uppercase">YOUTH EMPOWERMENT SUMMIT</h4>
+                        <p class="text-xs text-gray-500">Johannesburg</p>
+                     </div>
+                  </div>
+                  <button class="w-full border border-kyp-gold text-kyp-gold font-bold py-2 rounded hover:bg-kyp-gold hover:text-white transition-colors text-xs uppercase tracking-widest">
+                     VIEW DETAILS
+                  </button>
+               </div>
+            </div>
+            
+            <!-- Event 2 -->
+            <div class="bg-white border border-gray-200 rounded overflow-hidden shadow-sm">
+               <img src="https://images.unsplash.com/photo-1511632765486-a01c80cf8cb4?w=600&h=300&fit=crop" class="h-40 w-full object-cover grayscale opacity-80 mix-blend-multiply" />
+               <div class="p-6">
+                  <div class="flex items-center space-x-4 mb-4">
+                     <div class="bg-kyp-purple text-white p-2 rounded text-center w-14 shadow-inner">
+                        <div class="font-black text-xl leading-none">10</div>
+                        <div class="text-[9px] font-bold tracking-widest uppercase opacity-90 mt-1">JUL</div>
+                     </div>
+                     <div>
+                        <h4 class="font-bold text-gray-900 uppercase">COMMUNITY OUTREACH PROGRAMME</h4>
+                        <p class="text-xs text-gray-500">Pretoria</p>
+                     </div>
+                  </div>
+                  <button class="w-full border border-kyp-gold text-kyp-gold font-bold py-2 rounded hover:bg-kyp-gold hover:text-white transition-colors text-xs uppercase tracking-widest">
+                     VIEW DETAILS
+                  </button>
+               </div>
+            </div>
+
+            <!-- Event 3 -->
+            <div class="bg-white border border-gray-200 rounded overflow-hidden shadow-sm">
+               <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&h=300&fit=crop" class="h-40 w-full object-cover grayscale opacity-80 mix-blend-multiply" />
+               <div class="p-6">
+                  <div class="flex items-center space-x-4 mb-4">
+                     <div class="bg-kyp-purple text-white p-2 rounded text-center w-14 shadow-inner">
+                        <div class="font-black text-xl leading-none">22</div>
+                        <div class="text-[9px] font-bold tracking-widest uppercase opacity-90 mt-1">AUG</div>
+                     </div>
+                     <div>
+                        <h4 class="font-bold text-gray-900 uppercase">WOMEN IN LEADERSHIP WORKSHOP</h4>
+                        <p class="text-xs text-gray-500">Cape Town</p>
+                     </div>
+                  </div>
+                  <button class="w-full border border-kyp-gold text-kyp-gold font-bold py-2 rounded hover:bg-kyp-gold hover:text-white transition-colors text-xs uppercase tracking-widest">
+                     VIEW DETAILS
+                  </button>
+               </div>
+            </div>
+         </div>
+
+         <!-- Past Activities -->
+         <h2 class="text-xl font-bold text-gray-700 uppercase tracking-widest mb-6">PAST ACTIVITIES</h2>
+         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <img src="https://images.unsplash.com/photo-1511632765486-a01c80cf8cb4?w=400&h=300&fit=crop" class="w-full h-40 object-cover rounded" />
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=300&fit=crop" class="w-full h-40 object-cover rounded" />
+            <img src="https://images.unsplash.com/photo-1541872526845-a9b81f185df1?w=400&h=300&fit=crop" class="w-full h-40 object-cover rounded" />
+            <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=400&h=300&fit=crop" class="w-full h-40 object-cover rounded" />
+         </div>
+      </div>
+    </section>
+
+    <!-- PAGE 10: MEMBERSHIP -->
+    <section id="page-membership" class="page-section">
+      <div class="bg-kyp-purple text-kyp-white py-12 px-4 shadow-inner mb-16">
+         <div class="max-w-7xl mx-auto">
+            <h1 class="text-3xl font-black uppercase tracking-widest border-b-[3px] border-kyp-gold pb-2 inline-block">BECOME A MEMBER</h1>
+         </div>
+      </div>
+
+      <div class="max-w-5xl mx-auto px-4 md:px-8 pb-16 grid grid-cols-1 md:grid-cols-12 gap-12">
+         <!-- Left Perks -->
+         <div class="md:col-span-4 space-y-6">
+            <h3 class="font-bold text-lg uppercase tracking-wide border-b border-gray-200 pb-2">Why Join?</h3>
+            <ul class="space-y-4">
+               <li class="flex items-start">
+                  <div class="bg-kyp-purple rounded p-1 mr-3 shrink-0"><i data-lucide="check" class="text-kyp-gold w-4 h-4"></i></div>
+                  <span class="font-bold text-gray-700 text-sm py-0.5">Easy Registration</span>
+               </li>
+               <li class="flex items-start">
+                  <div class="bg-kyp-purple rounded p-1 mr-3 shrink-0"><i data-lucide="check" class="text-kyp-gold w-4 h-4"></i></div>
+                  <span class="font-bold text-gray-700 text-sm py-0.5">Member Database Access</span>
+               </li>
+               <li class="flex items-start">
+                  <div class="bg-kyp-purple rounded p-1 mr-3 shrink-0"><i data-lucide="check" class="text-kyp-gold w-4 h-4"></i></div>
+                  <span class="font-bold text-gray-700 text-sm py-0.5">Secure Data Management</span>
+               </li>
+            </ul>
+            <div class="mt-8 opacity-50 justify-center flex">
+               <i data-lucide="users" class="w-24 h-24 text-kyp-gold"></i>
+            </div>
+         </div>
+         
+         <!-- Form -->
+         <div class="md:col-span-8 bg-white border border-gray-200 p-8 shadow-sm">
+            <h2 class="text-xl font-bold text-gray-900 mb-6 border-b pb-4">BECOME A MEMBER</h2>
+            
+            <form class="space-y-8" onsubmit="event.preventDefault(); alert('Registration submitted!');">
+               
+               <!-- Section 1 & 2 wrapper -->
+               <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  
+                  <!-- Left Col of form -->
+                  <div class="space-y-6">
+                     <div>
+                        <h4 class="text-xs font-bold uppercase tracking-widest text-kyp-purple border-b mb-3 pb-1">PERSONAL INFORMATION</h4>
+                        <div class="grid grid-cols-2 gap-3 mb-3">
+                           <input type="text" placeholder="First Name" class="w-full text-sm border p-2 bg-gray-50 focus:border-kyp-purple focus:outline-none" required />
+                           <input type="text" placeholder="Surname" class="w-full text-sm border p-2 bg-gray-50 focus:border-kyp-purple focus:outline-none" required />
+                        </div>
+                        <div class="grid grid-cols-2 gap-3 mb-3">
+                           <input type="text" placeholder="Username" class="w-full text-sm border p-2 bg-gray-50 focus:border-kyp-purple focus:outline-none" required />
+                           <input type="date" placeholder="Date of Birth" class="w-full text-sm border p-2 bg-gray-50 text-gray-500 focus:border-kyp-purple focus:outline-none" required />
+                        </div>
+                        <input type="text" placeholder="ID Number" class="w-full text-sm border p-2 bg-gray-50 focus:border-kyp-purple focus:outline-none" required />
+                     </div>
+                     
+                     <div>
+                        <h4 class="text-xs font-bold uppercase tracking-widest text-kyp-purple border-b mb-3 pb-1">CONTACT INFORMATION</h4>
+                        <input type="tel" placeholder="Phone Number" class="w-full text-sm border p-2 bg-gray-50 focus:border-kyp-purple focus:outline-none mb-3" required />
+                        <input type="email" placeholder="Email Address" class="w-full text-sm border p-2 bg-gray-50 focus:border-kyp-purple focus:outline-none" required />
+                     </div>
+                  </div>
+
+                  <!-- Right Col of form -->
+                  <div class="space-y-6">
+                     <div>
+                        <h4 class="text-xs font-bold uppercase tracking-widest text-kyp-purple border-b mb-3 pb-1">ADDRESS INFORMATION</h4>
+                        <input type="text" placeholder="Street Address" class="w-full text-sm border p-2 bg-gray-50 focus:border-kyp-purple focus:outline-none mb-3" required />
+                        <div class="grid grid-cols-2 gap-3 mb-3">
+                           <input type="text" placeholder="City" class="w-full text-sm border p-2 bg-gray-50 focus:border-kyp-purple focus:outline-none" required />
+                           <input type="text" placeholder="Suburb" class="w-full text-sm border p-2 bg-gray-50 focus:border-kyp-purple focus:outline-none" />
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                           <select class="w-full text-sm border p-2 bg-gray-50 focus:border-kyp-purple focus:outline-none text-gray-500">
+                              <option>Province</option><option>Gauteng</option><option>Western Cape</option>
+                           </select>
+                           <input type="text" placeholder="Postal Code" class="w-full text-sm border p-2 bg-gray-50 focus:border-kyp-purple focus:outline-none" />
+                        </div>
+                     </div>
+                     
+                     <div>
+                        <h4 class="text-xs font-bold uppercase tracking-widest text-kyp-purple border-b mb-3 pb-1">ACCOUNT INFORMATION</h4>
+                        <input type="text" placeholder="Username" class="w-full text-sm border p-2 bg-gray-50 focus:border-kyp-purple focus:outline-none mb-3" required />
+                        <div class="grid grid-cols-2 gap-3">
+                           <input type="password" placeholder="Password" class="w-full text-sm border p-2 bg-gray-50 focus:border-kyp-purple focus:outline-none" required />
+                           <input type="password" placeholder="Confirm Password" class="w-full text-sm border p-2 bg-gray-50 focus:border-kyp-purple focus:outline-none" required />
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               
+               <div class="border-t pt-6 flex flex-col sm:flex-row items-center justify-between">
+                  <label class="flex items-center space-x-2 text-xs font-bold text-gray-700 tracking-wide mb-4 sm:mb-0">
+                     <input type="checkbox" required class="accent-kyp-purple w-4 h-4" />
+                     <span>I agree to become a member of KYP.</span>
+                  </label>
+                  <button type="submit" class="w-full sm:w-auto bg-kyp-purple text-kyp-white font-bold py-3 px-10 rounded hover:bg-kyp-gold transition-colors uppercase tracking-widest text-sm">
+                     REGISTER
+                  </button>
+               </div>
+               
+            </form>
+         </div>
+      </div>
+    </section>
+
+    <!-- PAGE 11: PARTNERSHIP -->
+    <section id="page-partnership" class="page-section">
+      <div class="bg-kyp-purple text-kyp-white py-12 px-4 shadow-inner mb-16">
+         <div class="max-w-7xl mx-auto min-h-[60px] flex items-end">
+            <h1 class="text-3xl font-black uppercase tracking-widest border-b-[3px] border-kyp-gold pb-2 inline-block">PARTNERSHIP PAGE</h1>
+         </div>
+      </div>
+
+      <div class="max-w-5xl mx-auto px-4 md:px-8 pb-16 grid grid-cols-1 md:grid-cols-3 gap-12">
+         <div class="space-y-4 pt-4">
+            <div class="flex items-center space-x-3 text-lg font-bold text-gray-800">
+               <div class="bg-kyp-purple rounded-full p-1"><i data-lucide="check" class="text-kyp-gold w-4 h-4"></i></div> 
+               <span>Partner with KYP</span>
+            </div>
+            <div class="flex items-center space-x-3 text-lg font-bold text-gray-800">
+               <div class="bg-kyp-purple rounded-full p-1"><i data-lucide="check" class="text-kyp-gold w-4 h-4"></i></div> 
+               <span>Support our mission</span>
+            </div>
+            <div class="flex items-center space-x-3 text-lg font-bold text-gray-800">
+               <div class="bg-kyp-purple rounded-full p-1"><i data-lucide="check" class="text-kyp-gold w-4 h-4"></i></div> 
+               <span>Build a stronger South Africa</span>
+            </div>
+         </div>
+
+         <div class="md:col-span-2 bg-white border border-gray-200 p-8 shadow-sm">
+            <h2 class="text-lg font-bold text-gray-900 border-b pb-4 mb-6 uppercase tracking-wider text-center">PARTNERSHIP FORM</h2>
+            <form class="space-y-4" onsubmit="event.preventDefault(); alert('Request sent');">
+               <input type="text" placeholder="Organisation Name" class="w-full text-sm border p-3 bg-gray-50 focus:border-kyp-purple focus:outline-none" required />
+               
+               <div class="grid grid-cols-2 gap-4">
+                  <input type="text" placeholder="First Name" class="w-full text-sm border p-3 bg-gray-50 focus:border-kyp-purple focus:outline-none" required />
+                  <input type="text" placeholder="Surname" class="w-full text-sm border p-3 bg-gray-50 focus:border-kyp-purple focus:outline-none" required />
+               </div>
+               
+               <div class="grid grid-cols-2 gap-4">
+                  <input type="tel" placeholder="Phone Number" class="w-full text-sm border p-3 bg-gray-50 focus:border-kyp-purple focus:outline-none" required />
+                  <input type="email" placeholder="Email Address" class="w-full text-sm border p-3 bg-gray-50 focus:border-kyp-purple focus:outline-none" required />
+               </div>
+
+               <div class="grid grid-cols-2 gap-4">
+                  <textarea placeholder="Address" rows="2" class="w-full text-sm border p-3 bg-gray-50 focus:border-kyp-purple focus:outline-none"></textarea>
+                  <div class="space-y-4">
+                     <input type="text" placeholder="Account Number" class="w-full text-sm border p-3 bg-gray-50 focus:border-kyp-purple focus:outline-none" />
+                     <input type="text" placeholder="Reason for Partnership" class="w-full text-sm border p-3 bg-gray-50 focus:border-kyp-purple focus:outline-none" />
+                  </div>
+               </div>
+
+               <input type="text" placeholder="Account Name" class="w-full text-sm border p-3 bg-gray-50 focus:border-kyp-purple focus:outline-none w-1/2 pr-2" />
+               
+               <div class="pt-4 flex justify-center">
+                  <button type="submit" class="bg-kyp-purple text-kyp-white font-bold py-4 px-12 rounded hover:bg-kyp-gold transition-colors uppercase tracking-widest text-sm w-full md:w-auto">
+                     SUBMIT PARTNERSHIP REQUEST
+                  </button>
+               </div>
+            </form>
+         </div>
+      </div>
+    </section>
+
+    <!-- PAGE 12: CONTACT US -->
+    <section id="page-contact" class="page-section">
+      <div class="bg-kyp-purple text-kyp-white py-12 px-4 shadow-inner mb-16">
+         <div class="max-w-7xl mx-auto min-h-[60px] flex items-end">
+            <h1 class="text-3xl font-black uppercase tracking-widest border-b-[3px] border-kyp-gold pb-2 inline-block">CONTACT US PAGE</h1>
+         </div>
+      </div>
+
+      <div class="max-w-5xl mx-auto px-4 md:px-8 pb-16 grid grid-cols-1 md:grid-cols-2 gap-12">
+         <!-- Contact Info -->
+         <div>
+            <h3 class="font-bold text-sm tracking-widest text-gray-500 uppercase mb-8 pb-2 border-b">CONTACT INFORMATION</h3>
+            <ul class="space-y-6 mb-12">
+               <li class="flex items-center space-x-4 bg-white p-4 border border-gray-100 rounded shadow-sm">
+                  <div class="text-kyp-purple bg-kyp-gold/10 p-2 rounded-full"><i data-lucide="map-pin" class="w-5 h-5"></i></div>
+                  <span class="font-bold text-gray-700">Know Your Power (KYP)</span>
+               </li>
+               <li class="flex items-center space-x-4 bg-white p-4 border border-gray-100 rounded shadow-sm">
+                  <div class="text-kyp-purple bg-kyp-gold/10 p-2 rounded-full"><i data-lucide="mail" class="w-5 h-5"></i></div>
+                  <span class="font-bold text-gray-700">info@knowyourpower.org.za</span>
+               </li>
+               <li class="flex items-center space-x-4 bg-white p-4 border border-gray-100 rounded shadow-sm">
+                  <div class="text-kyp-purple bg-kyp-gold/10 p-2 rounded-full"><i data-lucide="phone" class="w-5 h-5"></i></div>
+                  <span class="font-bold text-gray-700">+27 XX XXX XXXX</span>
+               </li>
+               <li class="flex items-center space-x-4 bg-white p-4 border border-gray-100 rounded shadow-sm">
+                  <div class="text-kyp-purple bg-kyp-gold/10 p-2 rounded-full"><i data-lucide="map" class="w-5 h-5"></i></div>
+                  <span class="font-bold text-gray-700">South Africa</span>
+               </li>
+            </ul>
+
+            <h3 class="font-bold text-sm tracking-widest text-gray-500 uppercase mb-4">FOLLOW US</h3>
+            <div class="flex space-x-4">
+               <a href="#" class="w-10 h-10 bg-kyp-purple text-kyp-white rounded-full flex items-center justify-center hover:bg-kyp-gold transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+               <a href="#" class="w-10 h-10 bg-kyp-purple text-kyp-white rounded-full flex items-center justify-center hover:bg-kyp-gold transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+               <a href="#" class="w-10 h-10 bg-kyp-purple text-kyp-white rounded-full flex items-center justify-center hover:bg-kyp-gold transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+               <a href="#" class="w-10 h-10 bg-kyp-purple text-kyp-white rounded-full flex items-center justify-center hover:bg-kyp-gold transition-colors"><i data-lucide="youtube" class="w-5 h-5"></i></a>
+            </div>
+         </div>
+
+         <!-- Message Form -->
+         <div class="bg-white border border-gray-200 p-8 shadow-sm">
+            <h3 class="font-bold text-sm tracking-widest text-gray-500 uppercase mb-6 pb-2 border-b">SEND US A MESSAGE</h3>
+            <form class="space-y-4" onsubmit="event.preventDefault(); alert('Message Sent!');">
+               <div>
+                  <label class="text-xs font-bold text-gray-400 uppercase tracking-widest">Name</label>
+                  <input type="text" class="w-full text-sm border-b-2 border-gray-100 p-2 bg-transparent focus:border-kyp-purple focus:outline-none" required />
+               </div>
+               <div>
+                  <label class="text-xs font-bold text-gray-400 uppercase tracking-widest">Email</label>
+                  <input type="email" class="w-full text-sm border-b-2 border-gray-100 p-2 bg-transparent focus:border-kyp-purple focus:outline-none" required />
+               </div>
+               <div>
+                  <label class="text-xs font-bold text-gray-400 uppercase tracking-widest">Subject</label>
+                  <input type="text" class="w-full text-sm border-b-2 border-gray-100 p-2 bg-transparent focus:border-kyp-purple focus:outline-none" required />
+               </div>
+               <div>
+                  <label class="text-xs font-bold text-gray-400 uppercase tracking-widest">Message</label>
+                  <textarea rows="4" class="w-full text-sm border-2 border-gray-100 rounded mt-2 p-3 bg-gray-50 focus:border-kyp-purple focus:outline-none" required></textarea>
+               </div>
+               <button type="submit" class="w-full bg-kyp-purple text-kyp-white font-bold py-4 rounded hover:bg-kyp-gold transition-colors uppercase tracking-widest text-sm mt-4">
+                  SEND MESSAGE
+               </button>
+            </form>
+         </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-kyp-black text-kyp-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 border-b border-white/10 pb-12 flex justify-center">
+       <!-- Footer Badge representation from layout -->
+       <div class="flex items-center space-x-6 w-full flex-col md:flex-row text-center md:text-left justify-between">
+          <div class="flex items-center space-x-4 mb-8 md:mb-0">
+             <i data-lucide="users" class="w-12 h-12 text-kyp-gold"></i>
+             <div>
+                <h4 class="font-black tracking-widest uppercase text-kyp-gold text-lg lg:text-xl">TOGETHER, WE CAN CREATE A BETTER FUTURE!</h4>
+             </div>
+          </div>
+          <div>
+             <h4 class="font-bold tracking-widest uppercase text-gray-400 text-sm">KNOW YOUR POWER. USE YOUR POWER. CHANGE YOUR WORLD.</h4>
+          </div>
+       </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 md:px-8 pt-8 flex justify-center opacity-60">
+      <svg width="45" height="55" viewBox="0 0 100 120" fill="none">
+         <path d="M50 5 L95 15 V45 C95 85 50 115 50 115 C50 115 5 85 5 45 V15 Z" fill="#2B003F" stroke="#D4AF37" stroke-width="4" stroke-linejoin="round"/>
+         <path d="M48 18 C45 18 45 22 45 24 V30 H40 C37 30 37 33 40 33 C37 33 37 36 40 36 C37 36 37 40 40 40 H38 C35 40 35 43 38 43 V48 H28 L40 65 H32 L48 105 L52 75 H68 L56 50 H65 V36 C65 33 62 30 58 30 C58 26 55 26 52 26 V22 C52 18 48 18 48 18 Z" fill="#D4AF37" stroke="#2B003F" stroke-width="1.5" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </footer>
+
+  <!-- ROUTING SCRIPT -->
+  <script>
+    lucide.createIcons();
+    
+    function toggleMobileNav() {
+       document.getElementById('mobile-nav').classList.add('hidden');
+    }
+
+    function navigateToPath(path) {
+      document.querySelectorAll('.page-section').forEach(el => el.classList.remove('active'));
+      const activeSection = document.getElementById('page-' + path);
+      if (activeSection) {
+        activeSection.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      } else {
+        document.getElementById('page-home').classList.add('active');
+      }
+
+      document.querySelectorAll('.desktop-nav a').forEach(el => {
+        if(el.getAttribute('href') === '#' + path) {
+          el.classList.add('text-kyp-gold', 'border-kyp-gold');
+          el.classList.remove('border-transparent');
+        } else {
+          el.classList.remove('text-kyp-gold', 'border-kyp-gold');
+          el.classList.add('border-transparent');
+        }
+      });
+    }
+
+    window.addEventListener('hashchange', () => {
+      let hash = window.location.hash.substring(1) || 'home';
+      navigateToPath(hash);
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if(!window.location.hash) {
+         window.location.hash = '#home';
+      } else {
+         let hash = window.location.hash.substring(1);
+         navigateToPath(hash);
+      }
+    });
+  </script>
+</body>
+</html>
