@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>KYP – Activities</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+.sec-tabs{display:flex;gap:8px;margin-bottom:36px;}
+.stab{padding:10px 28px;border:2px solid var(--purple);border-radius:5px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px;cursor:pointer;background:transparent;color:var(--purple);transition:background .15s,color .15s;}
+.stab:hover,.stab.active{background:var(--purple);color:var(--white);}
+
+.act-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.acard{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform .2s;}
+.acard:hover{transform:translateY(-5px);}
+.ahead{background:var(--purple);padding:16px 18px;display:flex;align-items:center;gap:14px;}
+.adate{background:var(--gold);border-radius:6px;padding:10px 14px;text-align:center;flex-shrink:0;}
+.adate .day{font-family:'Montserrat',sans-serif;font-weight:900;font-size:24px;color:var(--purple);line-height:1;}
+.adate .mon{font-size:9px;font-weight:700;color:var(--purple);text-transform:uppercase;letter-spacing:1px;}
+.ainfo{}
+.atitle{font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;color:var(--white);margin-bottom:3px;}
+.aloc{font-size:11px;color:rgba(255,255,255,.7);}
+.athumb{height:150px;background:linear-gradient(135deg,var(--purple2),#1a0030);display:flex;align-items:center;justify-content:center;font-size:46px;}
+.abody{padding:18px 20px;}
+.abody p{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:14px;}
+.atags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+.atag{background:rgba(43,0,63,.08);color:var(--purple);font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;font-family:'Montserrat',sans-serif;}
+
+.past-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+.pcard{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:grid;grid-template-columns:1fr 1.4fr;}
+.pthumb{background:linear-gradient(135deg,var(--purple),var(--purple2));display:flex;align-items:center;justify-content:center;font-size:44px;min-height:160px;}
+.pbody{padding:20px;}
+.pbody h4{font-family:'Montserrat',sans-serif;font-weight:700;font-size:14px;color:var(--purple);margin-bottom:6px;}
+.pbody .pmeta{font-size:11px;color:var(--muted);margin-bottom:10px;}
+.pbody p{font-size:12.5px;color:var(--muted);line-height:1.55;margin-bottom:12px;}
+.pdocs{display:flex;gap:6px;flex-wrap:wrap;}
+.pdoc{font-size:10px;font-weight:700;padding:3px 10px;border-radius:3px;background:var(--light);color:var(--purple);font-family:'Montserrat',sans-serif;}
+
+@media(max-width:960px){
+  .act-grid{grid-template-columns:1fr 1fr;}
+  .past-grid{grid-template-columns:1fr;}
+  .pcard{grid-template-columns:1fr;}
+  .pthumb{min-height:120px;}
+}
+@media(max-width:600px){.act-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav class="navbar" id="navbar"></nav>
+
+<div class="page-hero">
+  <div class="eyebrow">Events & Programmes</div>
+  <h1>KYP <span>Activities</span></h1>
+  <p>Stay up to date with all upcoming and past Know Your Power events, community programmes, and campaigns across South Africa.</p>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="sec-tabs fi">
+      <button class="stab active" onclick="showAct(this,'upcoming')">Upcoming Activities</button>
+      <button class="stab" onclick="showAct(this,'past')">Past Activities</button>
+    </div>
+
+    <!-- UPCOMING -->
+    <div id="act-upcoming">
+      <div class="act-grid">
+        <div class="acard fi">
+          <div class="ahead"><div class="adate"><div class="day">25</div><div class="mon">Jun</div></div><div class="ainfo"><div class="atitle">Youth Empowerment Summit</div><div class="aloc">📍 Sandton Convention Centre, Johannesburg</div></div></div>
+          <div class="athumb">🎤</div>
+          <div class="abody">
+            <div class="atags"><span class="atag">YOUTH</span><span class="atag">LEADERSHIP</span><span class="atag">FREE ENTRY</span></div>
+            <p>A gathering of young South Africans to discuss future leadership, skills development, and economic opportunities. Featuring keynote speakers, panels, and networking sessions.</p>
+            <a href="#" class="btn btn-purple btn-sm">VIEW DETAILS</a>
+          </div>
+        </div>
+        <div class="acard fi">
+          <div class="ahead"><div class="adate"><div class="day">10</div><div class="mon">Jul</div></div><div class="ainfo"><div class="atitle">Community Outreach Programme</div><div class="aloc">📍 Atteridgeville, Pretoria</div></div></div>
+          <div class="athumb">🤝</div>
+          <div class="abody">
+            <div class="atags"><span class="atag">COMMUNITY</span><span class="atag">OUTREACH</span><span class="atag">OPEN TO ALL</span></div>
+            <p>Reaching out to communities in need across Pretoria West. Providing food parcels, health screenings, membership registration, and connections to government services.</p>
+            <a href="#" class="btn btn-purple btn-sm">VIEW DETAILS</a>
+          </div>
+        </div>
+        <div class="acard fi">
+          <div class="ahead"><div class="adate"><div class="day">22</div><div class="mon">Aug</div></div><div class="ainfo"><div class="atitle">Women in Leadership Workshop</div><div class="aloc">📍 Century City, Cape Town</div></div></div>
+          <div class="athumb">👩‍💼</div>
+          <div class="abody">
+            <div class="atags"><span class="atag">WOMEN</span><span class="atag">LEADERSHIP</span><span class="atag">WORKSHOP</span></div>
+            <p>Celebrating and developing women leaders with mentorship sessions, professional development workshops, networking, and inspiring talks from South Africa's leading women.</p>
+            <a href="#" class="btn btn-purple btn-sm">VIEW DETAILS</a>
+          </div>
+        </div>
+        <div class="acard fi">
+          <div class="ahead"><div class="adate"><div class="day">5</div><div class="mon">Sep</div></div><div class="ainfo"><div class="atitle">Provincial Membership Drive</div><div class="aloc">📍 Multiple Venues, Limpopo</div></div></div>
+          <div class="athumb">✊</div>
+          <div class="abody">
+            <div class="atags"><span class="atag">MEMBERSHIP</span><span class="atag">ALL WELCOME</span></div>
+            <p>A province-wide membership registration drive across 12 Limpopo communities. KYP teams will visit townships, villages, and urban centres to register new members.</p>
+            <a href="#" class="btn btn-purple btn-sm">VIEW DETAILS</a>
+          </div>
+        </div>
+        <div class="acard fi">
+          <div class="ahead"><div class="adate"><div class="day">18</div><div class="mon">Oct</div></div><div class="ainfo"><div class="atitle">KYP Policy Conference</div><div class="aloc">📍 Durban International Convention Centre</div></div></div>
+          <div class="athumb">🏛️</div>
+          <div class="abody">
+            <div class="atags"><span class="atag">POLICY</span><span class="atag">GOVERNANCE</span></div>
+            <p>KYP's annual policy conference bringing together national and provincial leadership, advisors, and citizens to review and update the party's policy platform for 2027.</p>
+            <a href="#" class="btn btn-purple btn-sm">VIEW DETAILS</a>
+          </div>
+        </div>
+        <div class="acard fi">
+          <div class="ahead"><div class="adate"><div class="day">7</div><div class="mon">Nov</div></div><div class="ainfo"><div class="atitle">Education Forum – Schools Partnership</div><div class="aloc">📍 Soweto, Johannesburg</div></div></div>
+          <div class="athumb">🎓</div>
+          <div class="abody">
+            <div class="atags"><span class="atag">EDUCATION</span><span class="atag">YOUTH</span></div>
+            <p>Engaging schools across Soweto with resources, career guidance sessions, and connecting learners with scholarship and bursary opportunities available through KYP partners.</p>
+            <a href="#" class="btn btn-purple btn-sm">VIEW DETAILS</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAST -->
+    <div id="act-past" style="display:none;">
+      <div class="past-grid">
+        <div class="pcard fi">
+          <div class="pthumb">🏛️</div>
+          <div class="pbody">
+            <h4>KYP Founding Rally – Johannesburg</h4>
+            <div class="pmeta">📅 15 January 2026 &nbsp;·&nbsp; 📍 FNB Stadium, Johannesburg</div>
+            <p>The historic founding rally of Know Your Power, attended by over 8,000 citizens, marking the official launch of the movement across South Africa.</p>
+            <div class="pdocs"><span class="pdoc">📸 PHOTOS</span><span class="pdoc">🎬 VIDEO</span><span class="pdoc">📄 REPORT</span></div>
+          </div>
+        </div>
+        <div class="pcard fi">
+          <div class="pthumb">📋</div>
+          <div class="pbody">
+            <h4>Manifesto Launch Ceremony</h4>
+            <div class="pmeta">📅 1 May 2026 &nbsp;·&nbsp; 📍 Pretoria</div>
+            <p>The official release of the KYP Manifesto to the public, followed by a policy briefing session with media, partners, and civil society representatives.</p>
+            <div class="pdocs"><span class="pdoc">📸 PHOTOS</span><span class="pdoc">🎬 VIDEO</span><span class="pdoc">📄 MANIFESTO</span></div>
+          </div>
+        </div>
+        <div class="pcard fi">
+          <div class="pthumb">🎓</div>
+          <div class="pbody">
+            <h4>Youth Leadership Academy – Cohort 1</h4>
+            <div class="pmeta">📅 March–April 2026 &nbsp;·&nbsp; 📍 Johannesburg & Durban</div>
+            <p>The inaugural KYP Youth Leadership Academy trained 120 young leaders from six provinces over a six-week programme in leadership, governance, and civic engagement.</p>
+            <div class="pdocs"><span class="pdoc">📸 PHOTOS</span><span class="pdoc">📄 REPORT</span></div>
+          </div>
+        </div>
+        <div class="pcard fi">
+          <div class="pthumb">🤝</div>
+          <div class="pbody">
+            <h4>Partnership Gala & Fundraiser</h4>
+            <div class="pmeta">📅 28 February 2026 &nbsp;·&nbsp; 📍 Cape Town</div>
+            <p>KYP hosted its first partnership gala in Cape Town, attracting 32 partner organisations and raising funds for the youth empowerment and community safety programmes.</p>
+            <div class="pdocs"><span class="pdoc">📸 PHOTOS</span><span class="pdoc">🎬 VIDEO</span><span class="pdoc">📄 REPORT</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="footer"></footer>
+<script src="shared.js"></script>
+<script>
+function showAct(btn,id){
+  document.querySelectorAll('.stab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('act-upcoming').style.display= id==='upcoming' ? 'block' : 'none';
+  document.getElementById('act-past').style.display= id==='past' ? 'block' : 'none';
+}
+</script>
+</body>
+</html>

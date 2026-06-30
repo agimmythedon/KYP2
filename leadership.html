@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>KYP – Leadership Team</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+.lead-intro{display:grid;grid-template-columns:220px 1fr;gap:48px;align-items:start;margin-bottom:64px;}
+.lead-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px;}
+.ltab{padding:9px 22px;border:2px solid var(--purple);border-radius:5px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:1px;cursor:pointer;transition:background .15s,color .15s;background:transparent;color:var(--purple);}
+.ltab:hover,.ltab.active{background:var(--purple);color:var(--white);}
+.lead-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.lcard{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .2s,box-shadow .2s;}
+.lcard:hover{transform:translateY(-5px);box-shadow:0 12px 36px rgba(0,0,0,.16);}
+.lphoto{height:190px;background:linear-gradient(135deg,var(--purple),var(--purple2));display:flex;align-items:center;justify-content:center;font-size:52px;position:relative;}
+.lphoto .badge{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--purple);font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;text-transform:uppercase;letter-spacing:1px;padding:4px 12px;border-radius:20px;white-space:nowrap;}
+.linfo{padding:18px 20px;}
+.lname{font-family:'Montserrat',sans-serif;font-weight:700;font-size:14px;color:var(--purple);margin-bottom:3px;}
+.lrole{font-size:11px;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px;}
+.ldesc{font-size:12px;color:var(--muted);line-height:1.55;}
+
+/* modal */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:2000;align-items:center;justify-content:center;padding:20px;}
+.modal-overlay.open{display:flex;}
+.modal{background:var(--white);border-radius:14px;max-width:760px;width:100%;max-height:90vh;overflow-y:auto;position:relative;}
+.modal-head{background:linear-gradient(135deg,var(--purple),var(--purple2));padding:40px;display:flex;gap:28px;align-items:center;border-radius:14px 14px 0 0;}
+.modal-avatar{width:90px;height:90px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:38px;flex-shrink:0;border:3px solid rgba(255,255,255,.3);}
+.modal-head-info h2{font-family:'Montserrat',sans-serif;font-weight:900;font-size:22px;color:var(--white);}
+.modal-head-info span{font-size:13px;color:var(--gold);font-weight:600;}
+.modal-body{padding:36px 40px;}
+.modal-body h3{font-family:'Montserrat',sans-serif;font-weight:700;font-size:14px;color:var(--purple);text-transform:uppercase;letter-spacing:1px;margin:24px 0 10px;}
+.modal-body h3:first-child{margin-top:0;}
+.modal-body p{font-size:13.5px;color:#444;line-height:1.75;}
+.modal-close{position:absolute;top:14px;right:18px;background:rgba(255,255,255,.15);border:none;color:var(--white);font-size:20px;width:34px;height:34px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+
+.prov-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:12px;}
+.prov-card{background:var(--light);border-radius:8px;padding:18px;text-align:center;border:1px solid rgba(43,0,63,.08);}
+.prov-card h4{font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;color:var(--purple);margin-bottom:4px;}
+.prov-card p{font-size:11px;color:var(--muted);}
+.prov-card .pe{font-size:24px;margin-bottom:8px;}
+
+@media(max-width:900px){
+  .lead-intro{grid-template-columns:1fr;}
+  .lead-grid{grid-template-columns:repeat(2,1fr);}
+  .prov-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:500px){.lead-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav class="navbar" id="navbar"></nav>
+
+<div class="page-hero">
+  <div class="eyebrow">Our People</div>
+  <h1>Leadership <span>Team</span></h1>
+  <p>Meet the dedicated men and women leading Know Your Power across South Africa — nationally and in all nine provinces.</p>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="lead-intro">
+      <div class="fi">
+        <div class="section-hd"><h2>Structure</h2><div class="gold-line"></div></div>
+        <ul class="check-list">
+          <li><div class="chk">✓</div>President</li>
+          <li><div class="chk">✓</div>Deputy President</li>
+          <li><div class="chk">✓</div>National Chairperson</li>
+          <li><div class="chk">✓</div>Treasurer General</li>
+          <li><div class="chk">✓</div>NEC Members</li>
+          <li><div class="chk">✓</div>Provincial Leadership (9 Provinces)</li>
+        </ul>
+        <p style="font-size:12px;color:var(--muted);margin-top:16px;line-height:1.6;">Click on any leader card to view their full biography, responsibilities, activities, and documents.</p>
+      </div>
+      <div class="fi">
+        <div class="lead-tabs">
+          <button class="ltab active" onclick="showTab(this,'national')">National Leadership</button>
+          <button class="ltab" onclick="showTab(this,'nec')">NEC Members</button>
+          <button class="ltab" onclick="showTab(this,'provincial')">Provincial Leadership</button>
+        </div>
+        <!-- NATIONAL -->
+        <div id="tab-national" class="lead-grid">
+          <div class="lcard fi" onclick="openModal('Thabo Nkosi','President','✊','Thabo Nkosi is the founding President of Know Your Power. With over 20 years of experience in community development and civic leadership, he has dedicated his life to empowering South African citizens. Born in Soweto, Gauteng, Thabo rose through community structures before founding KYP to give ordinary citizens a real voice in democracy.','Leads the national executive, sets strategic direction, represents KYP publicly at the highest level, and oversees the implementation of the party manifesto across all provinces.','Launched the national membership drive · Led the Youth Empowerment Summit in Johannesburg · Spearheaded the KYP Partnership Programme')">
+            <div class="lphoto">✊<div class="badge">President</div></div>
+            <div class="linfo"><div class="lname">Thabo Nkosi</div><div class="lrole">President</div><div class="ldesc">Founding president with 20+ years in civic leadership and community development.</div></div>
+          </div>
+          <div class="lcard fi" onclick="openModal('Nomvula Dlamini','Deputy President','👤','Nomvula Dlamini serves as Deputy President of Know Your Power. A seasoned political scientist and community organiser from KwaZulu-Natal, she brings deep expertise in policy development and grassroots mobilisation. She is a champion for women in leadership and has run multiple community safety initiatives.','Supports the President in executive duties, oversees policy development, chairs the Women's League, and manages inter-provincial coordination.','Coordinated the Women in Leadership Workshop in Cape Town · Launched the KYP Policy Working Group · Represented KYP at national civic forums')">
+            <div class="lphoto">👤<div class="badge">Deputy President</div></div>
+            <div class="linfo"><div class="lname">Nomvula Dlamini</div><div class="lrole">Deputy President</div><div class="ldesc">Policy expert and champion for women's leadership across South Africa.</div></div>
+          </div>
+          <div class="lcard fi" onclick="openModal('Sipho Khumalo','National Chairperson','👤','Sipho Khumalo is the National Chairperson of Know Your Power. A former educator and civil society leader from Limpopo, Sipho is known for his ability to build consensus and unite diverse communities around a shared vision. He oversees the party\'s internal governance and organisational development.','Chairs all national executive meetings, oversees internal party governance, manages branch and provincial structures, and ensures constitutional compliance.','Established branch structures in all nine provinces · Introduced the KYP digital membership platform · Chaired the National Leadership Conference 2025')">
+            <div class="lphoto">👤<div class="badge">National Chairperson</div></div>
+            <div class="linfo"><div class="lname">Sipho Khumalo</div><div class="lrole">National Chairperson</div><div class="ldesc">Former educator turned civic leader driving KYP's national organisational structure.</div></div>
+          </div>
+          <div class="lcard fi" onclick="openModal('Lerato Mokoena','Treasurer General','👤','Lerato Mokoena serves as Treasurer General of Know Your Power. A qualified chartered accountant with experience in public finance and non-profit management, Lerato ensures that KYP\'s finances are managed with full transparency and accountability — values at the heart of the party\'s mission.','Manages all party finances, prepares financial reports for the NEC, oversees fundraising and donor relations, and ensures full compliance with electoral funding regulations.','Introduced quarterly public financial reports · Managed the KYP fundraising gala · Secured partnership funding for the youth programme')">
+            <div class="lphoto">👤<div class="badge">Treasurer General</div></div>
+            <div class="linfo"><div class="lname">Lerato Mokoena</div><div class="lrole">Treasurer General</div><div class="ldesc">Chartered accountant ensuring full financial transparency and accountability.</div></div>
+          </div>
+        </div>
+        <!-- NEC -->
+        <div id="tab-nec" class="lead-grid" style="display:none;">
+          <div class="lcard fi"><div class="lphoto" style="height:120px;font-size:32px;">👤</div><div class="linfo"><div class="lname">Andile Zulu</div><div class="lrole">NEC Member</div><div class="ldesc">Economic development portfolio</div></div></div>
+          <div class="lcard fi"><div class="lphoto" style="height:120px;font-size:32px;">👤</div><div class="linfo"><div class="lname">Busisiwe Ntuli</div><div class="lrole">NEC Member</div><div class="ldesc">Youth and education portfolio</div></div></div>
+          <div class="lcard fi"><div class="lphoto" style="height:120px;font-size:32px;">👤</div><div class="linfo"><div class="lname">Cyril Mahlangu</div><div class="lrole">NEC Member</div><div class="ldesc">Community safety portfolio</div></div></div>
+          <div class="lcard fi"><div class="lphoto" style="height:120px;font-size:32px;">👤</div><div class="linfo"><div class="lname">Dimakatso Sithole</div><div class="lrole">NEC Member</div><div class="ldesc">Health and social welfare</div></div></div>
+          <div class="lcard fi"><div class="lphoto" style="height:120px;font-size:32px;">👤</div><div class="linfo"><div class="lname">Emmanuel Moagi</div><div class="lrole">NEC Member</div><div class="ldesc">Infrastructure and housing</div></div></div>
+          <div class="lcard fi"><div class="lphoto" style="height:120px;font-size:32px;">👤</div><div class="linfo"><div class="lname">Fatima Daniels</div><div class="lrole">NEC Member</div><div class="ldesc">Media and communications</div></div></div>
+        </div>
+        <!-- PROVINCIAL -->
+        <div id="tab-provincial" style="display:none;">
+          <div class="prov-grid">
+            <div class="prov-card fi"><div class="pe">🏙️</div><h4>Gauteng</h4><p>Provincial Leader: Mpho Radebe</p></div>
+            <div class="prov-card fi"><div class="pe">🌊</div><h4>Western Cape</h4><p>Provincial Leader: Anele Jacobs</p></div>
+            <div class="prov-card fi"><div class="pe">🌿</div><h4>KwaZulu-Natal</h4><p>Provincial Leader: Sifiso Mthembu</p></div>
+            <div class="prov-card fi"><div class="pe">🏔️</div><h4>Eastern Cape</h4><p>Provincial Leader: Nolwazi Dyasi</p></div>
+            <div class="prov-card fi"><div class="pe">🦁</div><h4>Limpopo</h4><p>Provincial Leader: Thabang Nkosi</p></div>
+            <div class="prov-card fi"><div class="pe">⛏️</div><h4>Mpumalanga</h4><p>Provincial Leader: Gladys Mabunda</p></div>
+            <div class="prov-card fi"><div class="pe">🌾</div><h4>North West</h4><p>Provincial Leader: Kagiso Molefe</p></div>
+            <div class="prov-card fi"><div class="pe">🌻</div><h4>Free State</h4><p>Provincial Leader: Refilwe Dlamini</p></div>
+            <div class="prov-card fi"><div class="pe">🏜️</div><h4>Northern Cape</h4><p>Provincial Leader: Johann van Wyk</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="leaderModal" onclick="closeModal(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('leaderModal').classList.remove('open')">✕</button>
+    <div class="modal-head">
+      <div class="modal-avatar" id="mAvatar"></div>
+      <div class="modal-head-info">
+        <h2 id="mName"></h2>
+        <span id="mRole"></span>
+      </div>
+    </div>
+    <div class="modal-body">
+      <h3>Biography</h3>
+      <p id="mBio"></p>
+      <h3>Responsibilities</h3>
+      <p id="mResp"></p>
+      <h3>Key Activities</h3>
+      <p id="mActs"></p>
+    </div>
+  </div>
+</div>
+
+<footer id="footer"></footer>
+<script src="shared.js"></script>
+<script>
+function showTab(btn,id){
+  document.querySelectorAll('.ltab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  ['national','nec','provincial'].forEach(t=>{
+    const el=document.getElementById('tab-'+t);
+    if(el) el.style.display= t===id ? (t==='provincial'?'block':'grid') : 'none';
+  });
+}
+function openModal(name,role,avatar,bio,resp,acts){
+  document.getElementById('mName').textContent=name;
+  document.getElementById('mRole').textContent=role;
+  document.getElementById('mAvatar').textContent=avatar;
+  document.getElementById('mBio').textContent=bio;
+  document.getElementById('mResp').textContent=resp;
+  document.getElementById('mActs').innerHTML=acts.split('·').map(a=>`<div style="margin-bottom:6px;">· ${a.trim()}</div>`).join('');
+  document.getElementById('leaderModal').classList.add('open');
+}
+function closeModal(e){ if(e.target===document.getElementById('leaderModal')) document.getElementById('leaderModal').classList.remove('open'); }
+</script>
+</body>
+</html>

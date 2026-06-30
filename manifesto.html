@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>KYP – Manifesto</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+.man-layout{display:grid;grid-template-columns:280px 1fr;gap:48px;align-items:start;}
+.man-sidebar{position:sticky;top:90px;}
+.man-sidebar nav a{display:flex;align-items:center;gap:10px;padding:13px 16px;border-radius:7px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);transition:background .15s,color .15s;margin-bottom:4px;}
+.man-sidebar nav a:hover,.man-sidebar nav a.active{background:var(--purple);color:var(--white);}
+.man-sidebar nav a .mi{width:28px;text-align:center;font-size:16px;}
+.dl-box{background:var(--purple);border-radius:var(--radius);padding:28px;text-align:center;margin-top:24px;}
+.dl-box p{font-size:12px;color:rgba(255,255,255,.7);margin:8px 0 18px;line-height:1.5;}
+.dl-box h4{font-family:'Montserrat',sans-serif;font-weight:700;font-size:14px;color:var(--gold);}
+
+.man-section{margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid rgba(43,0,63,.1);}
+.man-section:last-child{border-bottom:none;}
+.man-section h2{font-family:'Montserrat',sans-serif;font-weight:900;font-size:24px;color:var(--purple);margin-bottom:8px;}
+.man-section .gold-line{margin-bottom:18px;}
+.man-section p{font-size:14.5px;line-height:1.8;color:#444;margin-bottom:14px;}
+.policy-points{display:flex;flex-direction:column;gap:10px;margin-top:16px;}
+.pp{background:var(--light);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;padding:14px 18px;font-size:14px;font-weight:600;display:flex;align-items:center;gap:12px;}
+.pp .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);flex-shrink:0;}
+
+@media(max-width:900px){.man-layout{grid-template-columns:1fr;}.man-sidebar{position:static;}}
+</style>
+</head>
+<body>
+<nav class="navbar" id="navbar"></nav>
+
+<div class="page-hero">
+  <div class="eyebrow">Our Platform</div>
+  <h1>The KYP <span>Manifesto</span></h1>
+  <p>Our commitment to every South African — a detailed policy platform built on justice, opportunity, and ethical governance.</p>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="man-layout">
+      <!-- Sidebar -->
+      <div class="man-sidebar fi">
+        <nav>
+          <a href="#intro" class="active"><span class="mi">📋</span>Introduction</a>
+          <a href="#economy"><span class="mi">📈</span>Economic Development</a>
+          <a href="#youth"><span class="mi">✊</span>Youth Empowerment</a>
+          <a href="#education"><span class="mi">🎓</span>Education</a>
+          <a href="#jobs"><span class="mi">💼</span>Job Creation</a>
+          <a href="#safety"><span class="mi">🏘️</span>Community Safety</a>
+          <a href="#governance"><span class="mi">🏛️</span>Good Governance</a>
+        </nav>
+        <div class="dl-box">
+          <h4>📄 KYP Manifesto</h4>
+          <p>Download the full manifesto document to read offline and share with your community.</p>
+          <a href="#" class="btn btn-gold btn-sm" style="width:100%;display:block;" onclick="alert('Manifesto PDF download will be available once uploaded.')">DOWNLOAD PDF</a>
+        </div>
+      </div>
+      <!-- Content -->
+      <div>
+        <div class="man-section fi" id="intro">
+          <h2>Introduction</h2>
+          <div class="gold-line"></div>
+          <p>Know Your Power (KYP) was founded on a simple but powerful idea: that every South African citizen holds immense power — the power to vote, to demand accountability, and to build the future they deserve.</p>
+          <p>This manifesto represents our covenant with the people of South Africa. It outlines the specific policies, plans, and commitments we will pursue to build a fairer, safer, and more prosperous nation for all.</p>
+          <p>We believe that good governance is not a privilege — it is a right. And we are committed to delivering it.</p>
+        </div>
+        <div class="man-section fi" id="economy">
+          <h2>Economic Development</h2>
+          <div class="gold-line"></div>
+          <p>A strong economy is the foundation of everything we want to achieve. KYP will implement targeted economic policies that grow the economy, reduce inequality, and create real opportunity for every South African.</p>
+          <div class="policy-points">
+            <div class="pp"><div class="dot"></div>Support for small and medium enterprises (SMMEs) through grants and low-interest loans</div>
+            <div class="pp"><div class="dot"></div>Attract foreign investment through a stable and transparent regulatory environment</div>
+            <div class="pp"><div class="dot"></div>Develop industrial hubs in underdeveloped provinces</div>
+            <div class="pp"><div class="dot"></div>Reduce red tape for new businesses and entrepreneurs</div>
+            <div class="pp"><div class="dot"></div>Promote township economies and informal sector support</div>
+          </div>
+        </div>
+        <div class="man-section fi" id="youth">
+          <h2>Youth Empowerment</h2>
+          <div class="gold-line"></div>
+          <p>South Africa's youth are not the leaders of tomorrow — they are the leaders of today. KYP commits to investing in young people now, giving them the skills, opportunities, and platforms they need to succeed.</p>
+          <div class="policy-points">
+            <div class="pp"><div class="dot"></div>National youth skills development programme in partnership with private sector</div>
+            <div class="pp"><div class="dot"></div>Youth entrepreneurship fund with mentorship support</div>
+            <div class="pp"><div class="dot"></div>Mental health support programmes for young people in communities</div>
+            <div class="pp"><div class="dot"></div>Youth leadership academies in all nine provinces</div>
+            <div class="pp"><div class="dot"></div>Internship and work placement guarantee for graduates</div>
+          </div>
+        </div>
+        <div class="man-section fi" id="education">
+          <h2>Education</h2>
+          <div class="gold-line"></div>
+          <p>Education is the most powerful tool we have to transform South Africa. KYP will fight to ensure every child — regardless of where they are born — has access to quality education that prepares them for life.</p>
+          <div class="policy-points">
+            <div class="pp"><div class="dot"></div>Free quality early childhood development (ECD) centres in every community</div>
+            <div class="pp"><div class="dot"></div>Fully resourced schools with qualified teachers in all provinces</div>
+            <div class="pp"><div class="dot"></div>Digital learning tools and internet access in every school</div>
+            <div class="pp"><div class="dot"></div>Increased bursaries and student funding for higher education</div>
+            <div class="pp"><div class="dot"></div>Adult literacy and lifelong learning programmes</div>
+          </div>
+        </div>
+        <div class="man-section fi" id="jobs">
+          <h2>Job Creation</h2>
+          <div class="gold-line"></div>
+          <p>Unemployment is South Africa's most urgent challenge. KYP will implement bold, targeted job creation strategies that put people to work in every sector of the economy.</p>
+          <div class="policy-points">
+            <div class="pp"><div class="dot"></div>Public employment programmes in infrastructure, environment, and community services</div>
+            <div class="pp"><div class="dot"></div>Incentives for businesses that hire young and previously unemployed people</div>
+            <div class="pp"><div class="dot"></div>Agriculture expansion to create rural employment</div>
+            <div class="pp"><div class="dot"></div>Green economy jobs in renewable energy and sustainability</div>
+            <div class="pp"><div class="dot"></div>Township business hubs creating local employment</div>
+          </div>
+        </div>
+        <div class="man-section fi" id="safety">
+          <h2>Community Safety</h2>
+          <div class="gold-line"></div>
+          <p>Every South African deserves to feel safe in their community, their school, and their home. KYP will take decisive action to tackle crime, gender-based violence, and the collapse of safety in too many of our communities.</p>
+          <div class="policy-points">
+            <div class="pp"><div class="dot"></div>Community policing forums strengthened and properly resourced</div>
+            <div class="pp"><div class="dot"></div>Zero tolerance approach to gender-based violence with dedicated courts</div>
+            <div class="pp"><div class="dot"></div>SAPS reform and accountability measures to rebuild public trust</div>
+            <div class="pp"><div class="dot"></div>Lighting and infrastructure improvements in high-crime areas</div>
+            <div class="pp"><div class="dot"></div>Rehabilitation programmes for offenders to reduce recidivism</div>
+          </div>
+        </div>
+        <div class="man-section fi" id="governance">
+          <h2>Good Governance</h2>
+          <div class="gold-line"></div>
+          <p>South Africa needs leadership that is honest, capable, and accountable. KYP will champion good governance at every level of government — from local municipalities to national departments.</p>
+          <div class="policy-points">
+            <div class="pp"><div class="dot"></div>Strengthen anti-corruption institutions and protect whistleblowers</div>
+            <div class="pp"><div class="dot"></div>Independent auditing of all government contracts and tenders</div>
+            <div class="pp"><div class="dot"></div>Publish all public spending online for citizen access</div>
+            <div class="pp"><div class="dot"></div>Term limits and performance reviews for public officials</div>
+            <div class="pp"><div class="dot"></div>Participatory budgeting — citizens vote on local government spending priorities</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="footer"></footer>
+<script src="shared.js"></script>
+<script>
+// Sidebar active tracking
+const sections = document.querySelectorAll('.man-section');
+const links = document.querySelectorAll('.man-sidebar nav a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{ if(window.scrollY>=s.offsetTop-120) cur=s.id; });
+  links.forEach(l=>{ l.classList.toggle('active', l.getAttribute('href')==='#'+cur); });
+});
+</script>
+</body>
+</html>
