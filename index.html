@@ -2,630 +2,141 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>KYP – Know Your Power</title>
-<meta name="description" content="Know Your Power (KYP) is a movement dedicated to empowering communities, building ethical leadership, and creating a better future for all South Africans."/>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>KYP – Know Your Power | Home</title>
+<link rel="stylesheet" href="style.css"/>
 <style>
-  :root {
-    --purple: #2B003F;
-    --purple-ho: #4a006e;
-    --gold: #D4AF37;
-    --white: #FFF;
-    --dark: #1A1A1A;
-    --light-bg: #f5f3f8;
-    --font-sans: 'Open Sans', sans-serif;
-    --font-head: 'Montserrat', sans-serif;
-  }
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,var(--purple) 0%,var(--purple2) 55%,#1a0030 100%);min-height:92vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:60px 28px;}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23D4AF37' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E") repeat;}
+.hero-wrap{position:relative;z-index:2;max-width:800px;margin:0 auto;}
+.hero-tag{display:inline-block;background:rgba(212,175,55,.15);border:1px solid var(--gold);color:var(--gold);font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:5px 20px;border-radius:30px;margin-bottom:26px;}
+.hero-circle{width:110px;height:110px;border-radius:50%;background:var(--gold);border:4px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;margin:0 auto 26px;font-size:46px;box-shadow:0 0 50px rgba(212,175,55,.35);}
+.hero-title{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(52px,9vw,90px);color:var(--white);line-height:.95;letter-spacing:-2px;margin-bottom:10px;}
+.hero-title span{color:var(--gold);}
+.hero-sub{font-size:17px;color:rgba(255,255,255,.78);line-height:1.7;margin-bottom:36px;}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:60px;}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: var(--font-sans); color: var(--dark); background: var(--white); overscroll-behavior: none; }
-  
-  /* Utilities */
-  .font-head, h1, h2, h3, .nav-logo span, .hero-badge, .btn, .section-number, .value-chip, .leader-name, .media-tab, .activity-date-box .day, .activity-title-card, .past-label, .form-section-label, .footer-logo, .footer-slogan { font-family: var(--font-head); }
-  .uppercase { text-transform: uppercase; letter-spacing: 1px; }
-  .bold { font-weight: 700; }
-  .x-bold { font-weight: 900; }
-  
-  /* Layouts */
-  .container { max-width: 1200px; margin: 0 auto; }
-  .flex { display: flex; }
-  .flex-col { display: flex; flex-direction: column; }
-  .items-center { align-items: center; }
-  .items-start { align-items: flex-start; }
-  .justify-between { justify-content: space-between; }
-  .justify-center { justify-content: center; }
-  .gap-2 { gap: 8px; } .gap-3 { gap: 12px; } .gap-4 { gap: 16px; } .gap-6 { gap: 24px; }
-  
-  .grid { display: grid; }
-  .grid-2 { grid-template-columns: 1fr 1fr; gap: 40px; }
-  .grid-3 { grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .grid-4 { grid-template-columns: repeat(4, 1fr); gap: 24px; }
-  .grid-about { grid-template-columns: 1fr 1.4fr; gap: 56px; align-items: center; }
-  .grid-member { grid-template-columns: 1fr 1.8fr; gap: 48px; align-items: center; }
-  
-  /* Buttons */
-  .btn { border-radius: 4px; cursor: pointer; text-decoration: none; transition: .2s; border: none; display: inline-block; text-align: center; font-weight: 700; font-family: var(--font-head); text-transform: uppercase; letter-spacing: 1px; }
-  .btn-primary { background: var(--gold); color: var(--purple); padding: 14px 36px; font-size: 14px; }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212,175,55,0.4); }
-  .btn-outline { background: transparent; color: var(--white); border: 2px solid var(--white); padding: 14px 36px; font-size: 14px; }
-  .btn-outline:hover { background: var(--white); color: var(--purple); }
-  .btn-sm { font-size: 11px; padding: 8px 20px; border: 2px solid var(--purple); color: var(--purple); background: transparent; }
-  .btn-sm:hover { background: var(--purple); color: var(--white); }
-  .btn-full { width: 100%; background: var(--purple); color: var(--white); padding: 14px; font-size: 14px; border-radius: 6px; margin-top: 10px; }
-  .btn-full:hover { background: var(--purple-ho); }
+/* strips */
+.strips{display:grid;grid-template-columns:1fr 1fr;gap:20px;text-align:left;}
+.sbox{background:rgba(255,255,255,.07);border:1px solid rgba(212,175,55,.2);border-radius:10px;padding:18px 20px;}
+.stitle{font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:13px;}
+.nitems{display:flex;flex-direction:column;gap:10px;}
+.nitem{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.8);font-size:12.5px;line-height:1.4;}
+.nimg{width:52px;height:38px;border-radius:5px;background:rgba(212,175,55,.18);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px;}
+.ssoc{display:flex;gap:8px;margin-top:14px;}
+.ssoc a{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--white);transition:background .2s,color .2s;}
+.ssoc a:hover{background:var(--gold);color:var(--purple);}
 
-  /* Navigation */
-  nav { background: var(--purple); padding: 0 40px; position: sticky; top: 0; z-index: 1000; height: 64px; box-shadow: 0 2px 12px rgba(0,0,0,0.4); }
-  .nav-logo { gap: 10px; text-decoration: none; }
-  .logo-circle { width: 42px; height: 42px; border-radius: 50%; background: var(--gold); font-size: 13px; color: var(--purple); flex-shrink: 0; letter-spacing: -0.5px; }
-  .nav-logo span { font-size: 16px; color: var(--white); }
-  nav ul { list-style: none; gap: 4px; }
-  nav ul a { color: var(--white); text-decoration: none; font-size: 12px; font-weight: 600; padding: 8px 12px; border-radius: 4px; transition: .2s; font-family: var(--font-head); letter-spacing: 0.5px; }
-  nav ul a.active, nav ul a:hover { background: var(--gold); color: var(--purple); }
-  .mobile-menu-btn { display: none; background: none; border: none; color: var(--white); font-size: 24px; cursor: pointer; }
+/* features */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.feat{background:var(--white);border-radius:var(--radius);padding:34px 28px;box-shadow:var(--shadow);border-top:4px solid var(--gold);text-align:center;transition:transform .2s;}
+.feat:hover{transform:translateY(-5px);}
+.feat .ico{font-size:42px;margin-bottom:16px;}
+.feat h3{font-family:'Montserrat',sans-serif;font-weight:700;font-size:16px;color:var(--purple);margin-bottom:10px;}
+.feat p{font-size:13.5px;color:var(--muted);line-height:1.65;}
 
-  /* Routing */
-  section { padding: 80px 40px; display: none; }
-  section.alt { background: var(--light-bg); }
-  section.active { display: block; animation: pageFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-  #home.active { display: flex; }
-  @keyframes pageFadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+/* stats */
+.stats{background:var(--purple);padding:64px 28px;}
+.stats-in{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;text-align:center;}
+.snum{font-family:'Montserrat',sans-serif;font-weight:900;font-size:50px;color:var(--gold);line-height:1;}
+.slbl{font-family:'Montserrat',sans-serif;font-weight:600;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:8px;}
 
-  /* Hero */
-  #home { background: linear-gradient(135deg, var(--purple) 0%, #4a006e 60%, #1a0030 100%); min-height: 92vh; text-align: center; position: relative; overflow: hidden; padding: 60px 20px; }
-  #home::before { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat; opacity: 0.6; }
-  #home::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 200px; background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 100%); }
-  .hero-content { position: relative; z-index: 2; max-width: 760px; margin: 0 auto; }
-  .hero-badge { display: inline-flex; gap: 8px; background: rgba(212,175,55,0.15); border: 1px solid var(--gold); border-radius: 30px; padding: 6px 18px; margin-bottom: 28px; color: var(--gold); font-size: 11px; }
-  .hero-logo-circle { width: 110px; height: 110px; border-radius: 50%; background: var(--gold); border: 4px solid var(--white); margin: 0 auto 28px; font-size: 28px; color: var(--purple); box-shadow: 0 0 40px rgba(212,175,55,0.4); }
-  .hero-title { font-size: clamp(48px, 8vw, 80px); color: var(--white); line-height: 1; letter-spacing: -1px; margin-bottom: 10px; }
-  .hero-title span { color: var(--gold); }
-  .hero-sub { font-size: 16px; color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 36px; }
-  .hero-strips { text-align: left; margin-top: 56px; }
-  .hero-strip-box { background: rgba(255,255,255,0.08); border: 1px solid rgba(212,175,55,0.2); border-radius: 8px; padding: 16px 20px; }
-  .hero-strip-label { font-size: 10px; color: var(--gold); margin-bottom: 10px; }
-  .news-thumb { color: rgba(255,255,255,0.8); font-size: 12px; }
-  .news-thumb .img-placeholder { width: 48px; height: 36px; background: rgba(212,175,55,0.2); border-radius: 4px; flex-shrink: 0; }
-  .social-icon { width: 32px; height: 32px; border-radius: 50%; background: rgba(255,255,255,0.1); font-size: 14px; color: var(--white); text-decoration: none; transition: .2s; }
-  .social-icon:hover { background: var(--gold); color: var(--purple); }
+/* quick */
+.quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.qcard{background:var(--purple);border-radius:var(--radius);padding:30px 20px;text-align:center;color:var(--white);display:block;transition:background .2s,transform .2s;}
+.qcard:hover{background:var(--purple2);transform:translateY(-4px);}
+.qcard .qi{font-size:36px;margin-bottom:12px;}
+.qcard h4{font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;color:var(--gold);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.qcard p{font-size:12px;color:rgba(255,255,255,.65);line-height:1.5;}
 
-  /* Sections */
-  .section-header { margin-bottom: 48px; }
-  .section-number { width: 36px; height: 36px; background: var(--purple); color: var(--white); font-size: 14px; }
-  .section-title { font-size: 28px; color: var(--purple); }
-  
-  /* Lists & Icons */
-  .checklist { list-style: none; }
-  .checklist li { display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 600; margin-bottom: 14px; }
-  .check-icon { width: 24px; height: 24px; border-radius: 50%; background: var(--purple); color: var(--gold); font-size: 12px; flex-shrink: 0; }
-  
-  /* Cards */
-  .card-purple { background: var(--purple); border-radius: 12px; padding: 36px; color: var(--white); }
-  .card-purple h3 { font-size: 22px; color: var(--gold); margin-bottom: 14px; }
-  .card-purple p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.85); margin-bottom: 24px; }
-  .card-white { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-  .form-card { padding: 36px; }
-  .form-card h3 { font-size: 20px; color: var(--purple); margin-bottom: 24px; text-align: center; }
-
-  /* Values Framework */
-  .value-chip { background: rgba(255,255,255,0.1); border: 1px solid rgba(212,175,55,0.3); border-radius: 8px; padding: 12px 6px; text-align: center; font-size: 10px; color: var(--gold); }
-  .value-chip .vi { font-size: 20px; display: block; margin-bottom: 6px; }
-
-  /* Manifesto */
-  .manifesto-list li { padding: 14px 18px; background: var(--white); border-left: 4px solid var(--gold); border-radius: 0 8px 8px 0; font-size: 14px; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.06); margin-bottom: 10px; }
-  .manifesto-download { text-align: center; padding: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; }
-
-  /* Forms */
-  .form-section-label { font-size: 11px; color: var(--gold); margin: 20px 0 12px; border-bottom: 1px solid rgba(212,175,55,0.3); padding-bottom: 6px; }
-  .form-group label { font-size: 11px; font-weight: 600; color: #666; text-transform: uppercase; letter-spacing: 0.5px; display: block; margin-bottom: 5px; }
-  .form-group input, .form-group select, .form-group textarea { width: 100%; border: 1.5px solid #ddd; border-radius: 6px; padding: 9px 12px; font-size: 13px; outline: none; transition: .2s; font-family: var(--font-sans); }
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--purple); }
-  .form-check { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #666; margin: 16px 0; }
-  .form-check input { width: auto; }
-
-  /* Activity Headers */
-  .activity-header { background: var(--purple); padding: 14px 18px; }
-  .activity-date-box { background: var(--gold); border-radius: 6px; padding: 8px 12px; text-align: center; flex-shrink: 0; }
-  .activity-date-box .day { font-size: 22px; color: var(--purple); line-height: 1; }
-  .activity-date-box .month { font-size: 10px; font-weight: 700; color: var(--purple); }
-  .activity-title-card { font-size: 13px; color: var(--white); margin-bottom: 3px; }
-  .activity-location { font-size: 11px; color: rgba(255,255,255,0.7); }
-  .activity-thumb { height: 140px; background: linear-gradient(135deg, #4a006e, var(--purple)); font-size: 40px; }
-
-  /* Reused Patterns */
-  .leader-photo, .media-thumb { height: 180px; background: linear-gradient(135deg, var(--purple), #6a0080); font-size: 48px; display: flex; align-items: center; justify-content: center; color: var(--gold); }
-  .media-thumb { height: 160px; font-size: 36px; }
-  
-  /* Tabs */
-  .media-tab { padding: 8px 24px; border: none; background: rgba(43,0,63,0.1); color: var(--purple); font-size: 12px; border-radius: 4px; cursor: pointer; transition: .2s; }
-  .media-tab.active, .media-tab:hover { background: var(--purple); color: var(--white); }
-
-  /* Footer */
-  footer { background: var(--purple); color: var(--white); padding: 40px; text-align: center; }
-  .footer-logo { font-size: 20px; color: var(--gold); }
-  .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 24px 0; }
-  .footer-slogan { font-size: 13px; color: var(--gold); padding: 20px; background: rgba(212,175,55,0.08); margin: 20px -40px -40px; }
-  .footer-bottom a { color: var(--gold); text-decoration: none; }
-
-  /* Animation Support */
-  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-  /* Responsive Rules */
-  @media (max-width: 900px) {
-    .mobile-menu-btn { display: block; }
-    nav ul { display: none; position: absolute; top: 64px; left: 0; right: 0; background: var(--purple); flex-direction: column; padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
-    nav ul.show { display: flex; }
-    nav ul a { display: block; padding: 12px; font-size: 14px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .grid-2, .grid-3, .grid-about, .grid-member { grid-template-columns: 1fr; }
-    .grid-4, .past-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-    .about-values { grid-template-columns: repeat(3, 1fr); margin-bottom: 16px; }
-    section { padding: 60px 20px; }
-  }
+@media(max-width:900px){
+  .strips,.feat-grid,.quick-grid{grid-template-columns:1fr;}
+  .stats-in{grid-template-columns:1fr 1fr;}
+}
 </style>
 </head>
 <body>
+<nav class="navbar" id="navbar"></nav>
 
-<nav class="flex items-center justify-between">
-  <a href="#home" class="nav-logo flex items-center">
-    <div class="logo-circle x-bold flex items-center justify-center">KYP</div>
-    <span class="x-bold uppercase">KNOW YOUR POWER</span>
-  </a>
-  <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Toggle Navigation">☰</button>
-  <ul id="nav-menu" class="flex items-center">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#about">About Us</a></li>
-    <li><a href="#manifesto">Manifesto</a></li>
-    <li><a href="#leadership">Leadership</a></li>
-    <li><a href="#media">Media</a></li>
-    <li><a href="#activities">Activities</a></li>
-    <li><a href="#partnership">Partnership</a></li>
-    <li><a href="#contact">Contact Us</a></li>
-  </ul>
-</nav>
-
-<main id="main-content">
-  
-<!-- HOME -->
-<section id="home">
-  <div class="hero-content">
-    <div class="hero-badge bold">✊ KYP · VOTE · 2026</div>
-    <div class="hero-logo-circle x-bold flex items-center justify-center">✊</div>
-    <h1 class="hero-title x-bold">KNOW YOUR<br><span>POWER</span></h1>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-wrap fi">
+    <div class="hero-tag">✊ Official Website · Know Your Power</div>
+    <div class="hero-circle">✊</div>
+    <h1 class="hero-title">KNOW YOUR<br><span>POWER</span></h1>
     <p class="hero-sub">Empowering Citizens. Building Ethical Leadership.<br>Creating Opportunities for All.</p>
-    <div class="flex justify-center gap-4 flex-wrap">
-      <a href="#membership" class="btn btn-primary">JOIN KYP</a>
-      <a href="#manifesto" class="btn btn-outline">READ MANIFESTO</a>
+    <div class="hero-btns">
+      <a href="membership.html" class="btn btn-gold">JOIN KYP</a>
+      <a href="manifesto.html" class="btn btn-outline-white">READ MANIFESTO</a>
     </div>
-    
-    <div class="hero-strips grid grid-2">
-      <div class="hero-strip-box">
-        <div class="hero-strip-label uppercase bold">📰 LATEST NEWS</div>
-        <div class="flex-col gap-2">
-          <div class="news-thumb flex items-center gap-2"><div class="img-placeholder"></div><span>KYP launches youth empowerment drive</span></div>
-          <div class="news-thumb flex items-center gap-2"><div class="img-placeholder"></div><span>Leadership summit draws thousands</span></div>
-          <div class="news-thumb flex items-center gap-2"><div class="img-placeholder"></div><span>Membership portal is now open</span></div>
+    <div class="strips">
+      <div class="sbox">
+        <div class="stitle">📰 Latest News</div>
+        <div class="nitems">
+          <div class="nitem"><div class="nimg">🏛️</div><span>KYP launches youth empowerment drive across SA provinces</span></div>
+          <div class="nitem"><div class="nimg">🎤</div><span>Leadership summit draws thousands in Johannesburg</span></div>
+          <div class="nitem"><div class="nimg">✊</div><span>New membership portal now open for registration</span></div>
         </div>
       </div>
-      <div class="hero-strip-box">
-        <div class="hero-strip-label uppercase bold">📅 UPCOMING ACTIVITIES</div>
-        <div class="flex-col gap-2">
-          <div class="news-thumb flex items-center gap-2"><div class="img-placeholder"></div><span>Youth Summit · 25 Jun · JHB</span></div>
-          <div class="news-thumb flex items-center gap-2"><div class="img-placeholder"></div><span>Outreach Programme · 10 Jul · PTA</span></div>
+      <div class="sbox">
+        <div class="stitle">📅 Upcoming Activities</div>
+        <div class="nitems">
+          <div class="nitem"><div class="nimg">🎤</div><span>Youth Empowerment Summit · 25 Jun · Johannesburg</span></div>
+          <div class="nitem"><div class="nimg">🤝</div><span>Community Outreach Programme · 10 Jul · Pretoria</span></div>
+          <div class="nitem"><div class="nimg">👩‍💼</div><span>Women in Leadership Workshop · 22 Aug · Cape Town</span></div>
         </div>
-        <div class="flex gap-3" style="margin-top:16px;">
-          <a class="social-icon flex items-center justify-center" href="#" aria-label="Facebook">f</a>
-          <a class="social-icon flex items-center justify-center" href="#" aria-label="X">𝕏</a>
-          <a class="social-icon flex items-center justify-center" href="#" aria-label="YouTube">▶</a>
+        <div class="ssoc">
+          <a href="#">f</a><a href="#">𝕏</a><a href="#">▶</a><a href="#">📷</a><a href="#">♪</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT US -->
-<section id="about" class="alt">
+<!-- FEATURES -->
+<section class="section">
   <div class="container">
-    <div class="section-header fade-in flex items-center gap-3">
-      <div class="section-number x-bold flex items-center justify-center">1</div>
-      <h2 class="section-title x-bold uppercase">About Us</h2>
+    <div class="section-hd fi">
+      <h2>Why Know Your Power?</h2>
+      <div class="gold-line"></div>
+      <p>We are a movement built on service, unity, and the belief that every South African has the power to shape a better future.</p>
     </div>
-    <div class="grid grid-about">
-      <div class="fade-in">
-        <ul class="checklist">
-          <li><span class="check-icon flex items-center justify-center">✓</span> Who We Are</li>
-          <li><span class="check-icon flex items-center justify-center">✓</span> Mission & Vision</li>
-          <li><span class="check-icon flex items-center justify-center">✓</span> Core Values</li>
-        </ul>
-      </div>
-      <div class="card-purple fade-in">
-        <h3 class="x-bold">About KYP</h3>
-        <p>Know Your Power (KYP) is a movement dedicated to empowering communities, building ethical leadership and creating a better future for all South Africans. We believe every citizen has the power to shape their destiny.</p>
-        <div class="grid grid-about about-values" style="grid-template-columns: repeat(5,1fr); gap:10px;">
-          <div class="value-chip bold"><span class="vi">🛡️</span>ACCOUNTABILITY</div>
-          <div class="value-chip bold"><span class="vi">🤝</span>SERVICE</div>
-          <div class="value-chip bold"><span class="vi">💪</span>UNITY</div>
-          <div class="value-chip bold"><span class="vi">⭐</span>LEADERSHIP</div>
-          <div class="value-chip bold"><span class="vi">🌟</span>EMPOWERMENT</div>
-        </div>
-      </div>
+    <div class="feat-grid">
+      <div class="feat fi"><div class="ico">🛡️</div><h3>Accountability</h3><p>We hold ourselves and our representatives to the highest standards of transparency and ethical conduct in all governance matters.</p></div>
+      <div class="feat fi"><div class="ico">🤝</div><h3>Community Service</h3><p>Our programmes reach vulnerable communities, delivering real support, skills, and opportunity to those who need it most.</p></div>
+      <div class="feat fi"><div class="ico">🌟</div><h3>Youth Empowerment</h3><p>Young South Africans are the future. We invest in leadership development, job creation, and education at every level.</p></div>
     </div>
   </div>
 </section>
 
-<!-- MANIFESTO -->
-<section id="manifesto">
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-in">
+    <div class="fi"><div class="snum">50K+</div><div class="slbl">Members Nationwide</div></div>
+    <div class="fi"><div class="snum">9</div><div class="slbl">Provinces Active</div></div>
+    <div class="fi"><div class="snum">120+</div><div class="slbl">Community Events</div></div>
+    <div class="fi"><div class="snum">30+</div><div class="slbl">Partner Organisations</div></div>
+  </div>
+</div>
+
+<!-- QUICK LINKS -->
+<section class="section alt">
   <div class="container">
-    <div class="section-header fade-in flex items-center gap-3">
-      <div class="section-number x-bold flex items-center justify-center">2</div>
-      <h2 class="section-title x-bold uppercase">Manifesto</h2>
+    <div class="section-hd fi">
+      <h2>Explore KYP</h2>
+      <div class="gold-line"></div>
     </div>
-    <div class="grid grid-2 manifesto-grid">
-      <ul class="checklist manifesto-list fade-in">
-        <li><span class="m-icon">📈</span> Economic Development</li>
-        <li><span class="m-icon">✊</span> Youth Empowerment</li>
-        <li><span class="m-icon">🎓</span> Education</li>
-        <li><span class="m-icon">💼</span> Job Creation</li>
-        <li><span class="m-icon">🏘️</span> Community Safety</li>
-        <li><span class="m-icon">🏛️</span> Good Governance</li>
-      </ul>
-      <div class="card-purple manifesto-download fade-in">
-        <div style="font-size:48px; margin-bottom: 16px;">📄</div>
-        <h3 class="x-bold">KYP Manifesto</h3>
-        <p>Download our manifesto and discover the detailed policies to transform South Africa.</p>
-        <button class="btn btn-primary" style="margin-top:16px;">DOWNLOAD PDF</button>
-      </div>
+    <div class="quick-grid">
+      <a href="about.html" class="qcard fi"><div class="qi">📖</div><h4>About Us</h4><p>Our mission, vision, values and who we are.</p></a>
+      <a href="manifesto.html" class="qcard fi"><div class="qi">📋</div><h4>Manifesto</h4><p>Our full policy platform and downloadable PDF.</p></a>
+      <a href="leadership.html" class="qcard fi"><div class="qi">👥</div><h4>Leadership</h4><p>National and provincial leadership structure.</p></a>
+      <a href="membership.html" class="qcard fi"><div class="qi">✊</div><h4>Join KYP</h4><p>Become a member and shape South Africa's future.</p></a>
     </div>
   </div>
 </section>
 
-<!-- LEADERSHIP -->
-<section id="leadership" class="alt">
-  <div class="container">
-    <div class="section-header fade-in flex items-center gap-3">
-      <div class="section-number x-bold flex items-center justify-center">3</div>
-      <h2 class="section-title x-bold uppercase">Leadership Team</h2>
-    </div>
-    <div class="grid grid-member">
-      <div class="fade-in">
-        <ul class="checklist text-sm">
-          <li><span class="check-icon flex items-center justify-center">✓</span> President</li>
-          <li><span class="check-icon flex items-center justify-center">✓</span> Deputy President</li>
-          <li><span class="check-icon flex items-center justify-center">✓</span> National Chairperson</li>
-          <li><span class="check-icon flex items-center justify-center">✓</span> Treasurer General</li>
-        </ul>
-        <p style="font-size:12px;color:#666;line-height:1.6;margin-top:16px;">Select a leader to view responsibilities.</p>
-      </div>
-      <div>
-        <div class="grid grid-4 fade-in">
-          <div class="card-white text-center hover:translate-y-1 transition duration-200">
-            <img src="data:image/jpeg;base64,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" alt="Galston Anthony" style="width: 100%; height: 180px; object-fit: cover; display: block;" />
-            <div class="p-4" style="padding: 16px;">
-              <div class="leader-name bold text-purple">Galston Anthony</div>
-              <div class="text-xs text-gold uppercase bold" style="font-size: 10px;">President</div>
-            </div>
-          </div>
-          <div class="card-white text-center hover:translate-y-1 transition duration-200">
-            <div class="leader-photo">👤</div>
-            <div class="p-4" style="padding: 16px;">
-              <div class="leader-name bold text-purple">Brendan Govender</div>
-              <div class="text-xs text-gold uppercase bold" style="font-size: 10px;">National charset</div>
-            </div>
-          </div>
-          <div class="card-white text-center">
-            <div class="leader-photo">👤</div>
-            <div class="p-4" style="padding: 16px;">
-              <div class="leader-name bold text-purple">Nomsa Khumalo</div>
-              <div class="text-xs text-gold uppercase bold" style="font-size: 10px;">Chairperson</div>
-            </div>
-          </div>
-          <div class="card-white text-center">
-            <div class="leader-photo">👤</div>
-            <div class="p-4" style="padding: 16px;">
-              <div class="leader-name bold text-purple">Lerato Mokoena</div>
-              <div class="text-xs text-gold uppercase bold" style="font-size: 10px;">Treasurer</div>
-            </div>
-          </div>
-        </div>
-        <div class="flex justify-center gap-4 mt-6" style="margin-top: 24px;">
-          <button class="btn btn-sm">NEC MEMBERS</button>
-          <button class="btn btn-sm">PROVINCIAL TEAM</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MEDIA -->
-<section id="media">
-  <div class="container">
-    <div class="section-header fade-in flex items-center gap-3">
-      <div class="section-number x-bold flex items-center justify-center">4</div>
-      <h2 class="section-title x-bold uppercase">Media Centre</h2>
-    </div>
-    <div class="flex flex-wrap gap-2 mb-8 fade-in" style="margin-bottom:32px;">
-      <button class="media-tab uppercase bold active" onclick="filterMedia(this,'reports')">Reports</button>
-      <button class="media-tab uppercase bold" onclick="filterMedia(this,'images')">Images</button>
-      <button class="media-tab uppercase bold" onclick="filterMedia(this,'videos')">Videos</button>
-      <button class="media-tab uppercase bold" onclick="filterMedia(this,'news')">News</button>
-    </div>
-    <div class="grid grid-3 fade-in" id="media-grid">
-      <!-- Injected via JavaScript -->
-    </div>
-  </div>
-</section>
-
-<!-- ACTIVITIES -->
-<section id="activities" class="alt">
-  <div class="container">
-    <div class="section-header fade-in flex items-center gap-3">
-      <div class="section-number x-bold flex items-center justify-center">5</div>
-      <h2 class="section-title x-bold uppercase">Activities</h2>
-    </div>
-    <div class="grid grid-3 mb-10">
-      <div class="card-white fade-in">
-        <div class="activity-header flex items-center gap-3">
-          <div class="activity-date-box"><div class="day x-bold">25</div><div class="month uppercase bold">JUN</div></div>
-          <div>
-            <div class="activity-title-card bold uppercase">Youth Summit</div>
-            <div class="activity-location">📍 JHB</div>
-          </div>
-        </div>
-        <div class="activity-thumb flex items-center justify-center">🎤</div>
-        <div style="padding: 16px;">
-          <p style="font-size:13px;color:#555;line-height:1.5;">Discussion on the future, leadership, and youth opportunities.</p>
-          <button class="btn btn-sm" style="margin-top:12px;">DETAILS</button>
-        </div>
-      </div>
-      <div class="card-white fade-in">
-        <div class="activity-header flex items-center gap-3">
-          <div class="activity-date-box"><div class="day x-bold">10</div><div class="month uppercase bold">JUL</div></div>
-          <div>
-            <div class="activity-title-card bold uppercase">Community Outreach</div>
-            <div class="activity-location">📍 Pretoria</div>
-          </div>
-        </div>
-        <div class="activity-thumb flex items-center justify-center">🤝</div>
-        <div style="padding: 16px;">
-          <p style="font-size:13px;color:#555;line-height:1.5;">Providing resources, support, and connecting residents.</p>
-          <button class="btn btn-sm" style="margin-top:12px;">DETAILS</button>
-        </div>
-      </div>
-      <div class="card-white fade-in">
-        <div class="activity-header flex items-center gap-3">
-          <div class="activity-date-box"><div class="day x-bold">22</div><div class="month uppercase bold">AUG</div></div>
-          <div>
-            <div class="activity-title-card bold uppercase">Women in Leadership</div>
-            <div class="activity-location">📍 Cape Town</div>
-          </div>
-        </div>
-        <div class="activity-thumb flex items-center justify-center">👩‍💼</div>
-        <div style="padding: 16px;">
-          <p style="font-size:13px;color:#555;line-height:1.5;">Mentorship and professional development networking.</p>
-          <button class="btn btn-sm" style="margin-top:12px;">DETAILS</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MEMBERSHIP -->
-<section id="membership">
-  <div class="container">
-    <div class="section-header fade-in flex items-center gap-3">
-      <div class="section-number x-bold flex items-center justify-center">6</div>
-      <h2 class="section-title x-bold uppercase">Membership</h2>
-    </div>
-    <div class="grid grid-member">
-      <div class="fade-in text-center">
-        <ul class="checklist flex-col gap-4 mb-6 text-left">
-          <li><div class="check-icon flex items-center justify-center text-white" style="width:36px;height:36px;font-size:18px;">✅</div><span>Easy Registration</span></li>
-          <li><div class="check-icon flex items-center justify-center text-white" style="width:36px;height:36px;font-size:18px;">🗃️</div><span>Secure Member DB</span></li>
-        </ul>
-        <div style="font-size:80px; margin-top:20px;">👥</div>
-      </div>
-      
-      <form class="card-white form-card fade-in" onsubmit="event.preventDefault(); alert('Registration submitted!');">
-        <h3 class="x-bold">BECOME A MEMBER</h3>
-        
-        <div class="form-section-label uppercase bold">Personal Information</div>
-        <div class="grid grid-2 gap-3" style="margin-bottom:12px;">
-          <div class="form-group"><label for="fname">First Name</label><input type="text" id="fname" required/></div>
-          <div class="form-group"><label for="sname">Surname</label><input type="text" id="sname" required/></div>
-        </div>
-        
-        <div class="form-section-label uppercase bold">Contact Details</div>
-        <div class="grid grid-2 gap-3" style="margin-bottom:12px;">
-          <div class="form-group"><label for="email">Email</label><input type="email" id="email" required/></div>
-          <div class="form-group"><label for="phone">Phone</label><input type="tel" id="phone"/></div>
-        </div>
-        
-        <div class="form-check">
-          <input type="checkbox" id="agree" required/>
-          <label for="agree" style="display:inline;text-transform:none;letter-spacing:normal;">I accept the terms and conditions</label>
-        </div>
-        
-        <button type="submit" class="btn btn-full">REGISTER NOW</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- PARTNERSHIP -->
-<section id="partnership" class="alt">
-  <div class="container">
-    <div class="section-header fade-in flex items-center gap-3">
-      <div class="section-number x-bold flex items-center justify-center">7</div>
-      <h2 class="section-title x-bold uppercase">Partnership</h2>
-    </div>
-    <div class="grid grid-member">
-      <div class="fade-in">
-        <ul class="checklist">
-          <li><span class="check-icon flex items-center justify-center text-white" style="width:36px;height:36px;font-size:16px;">🤝</span>Partner with KYP</li>
-          <li><span class="check-icon flex items-center justify-center text-white" style="width:36px;height:36px;font-size:16px;">❤️</span>Support our mission</li>
-        </ul>
-        <div class="flex items-center justify-center" style="height:180px;background:linear-gradient(135deg,var(--gold-light),var(--gold));border-radius:12px;font-size:64px;margin-top:24px;">🤝</div>
-      </div>
-      <form class="card-white form-card fade-in" onsubmit="event.preventDefault(); alert('Request sent!');">
-        <h3 class="x-bold">PARTNER WITH US</h3>
-        <div class="form-group mb-3"><label for="orgName">Organisation Name</label><input type="text" id="orgName" required/></div>
-        <div class="grid grid-2 gap-3 mb-3">
-          <div class="form-group"><label for="pEmail">Email</label><input type="email" id="pEmail" required/></div>
-          <div class="form-group"><label for="pPhone">Phone</label><input type="tel" id="pPhone"/></div>
-        </div>
-        <button type="submit" class="btn btn-full">SUBMIT REQUEST</button>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="container">
-    <div class="section-header fade-in flex items-center gap-3">
-      <div class="section-number x-bold flex items-center justify-center">8</div>
-      <h2 class="section-title x-bold uppercase">Contact Us</h2>
-    </div>
-    <div class="grid grid-member">
-      <div class="fade-in">
-        <div class="form-section-label bold uppercase" style="border:none;">Information</div>
-        <ul class="checklist flex-col gap-4">
-          <li><span class="check-icon flex items-center justify-center" style="background:var(--gold);color:var(--dark);width:36px;height:36px;">✉️</span> <div class="flex-col"><span class="text-xs uppercase bold" style="font-size:10px;color:#888;">Email</span><b>info@knowyourpower.org.za</b></div></li>
-          <li><span class="check-icon flex items-center justify-center" style="background:var(--gold);color:var(--dark);width:36px;height:36px;">📞</span> <div class="flex-col"><span class="text-xs uppercase bold" style="font-size:10px;color:#888;">Phone</span><b>+27 XX XXX XXXX</b></div></li>
-        </ul>
-      </div>
-      <form class="card-white form-card fade-in" onsubmit="event.preventDefault(); alert('Message delivered!');">
-        <h3 class="x-bold">SEND MESSAGE</h3>
-        <div class="form-group" style="margin-bottom:12px;"><label for="cName">Name</label><input type="text" id="cName" required/></div>
-        <div class="form-group" style="margin-bottom:12px;"><label for="cEmail">Email</label><input type="email" id="cEmail" required/></div>
-        <div class="form-group" style="margin-bottom:16px;"><label for="cMsg">Message</label><textarea id="cMsg" required style="resize:vertical;height:100px;"></textarea></div>
-        <button type="submit" class="btn btn-full">SEND NOW</button>
-      </form>
-    </div>
-  </div>
-</section>
-</main>
-
-<footer>
-  <div class="container">
-    <div class="flex justify-between items-center" style="flex-wrap:wrap; gap:20px; margin-bottom: 28px;">
-      <div class="text-left">
-        <div class="footer-logo x-bold">✊ KYP · KNOW YOUR POWER</div>
-        <div style="font-size:13px; color:rgba(255,255,255,0.7); margin-top:8px;">Empowering Citizens. Building Leadership.</div>
-      </div>
-      <div class="flex gap-3">
-        <a class="social-icon flex items-center justify-center" href="#" aria-label="FB">f</a>
-        <a class="social-icon flex items-center justify-center" href="#" aria-label="X">𝕏</a>
-        <a class="social-icon flex items-center justify-center" href="#" aria-label="IG">📷</a>
-      </div>
-    </div>
-    <hr class="footer-divider"/>
-    <div class="flex justify-between items-center" style="flex-wrap:wrap; font-size:12px; color:rgba(255,255,255,0.5);">
-      <span>© 2026 Know Your Power (KYP). All rights reserved.</span>
-      <span><a href="#">Privacy Policy</a> · <a href="#">Terms of Use</a></span>
-    </div>
-  </div>
-  <div class="footer-slogan bold uppercase">TOGETHER, WE CAN CREATE A BETTER FUTURE! · KNOW YOUR POWER.</div>
-</footer>
-
-<script>
-  // Simplified Intersection Observer
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-
-  function toggleMobileMenu() {
-    document.getElementById('nav-menu').classList.toggle('show');
-  }
-
-  // Optimize document clicks (fast event delegation)
-  document.addEventListener('click', (e) => {
-    const link = e.target.closest('a');
-    if (link && link.getAttribute('href') === '#') e.preventDefault();
-  });
-
-  // Fast Routing Engine
-  function navigate() {
-    let hash = window.location.hash.substring(1) || 'home';
-    let target = document.getElementById(hash);
-    
-    if (!target || target.tagName !== 'SECTION') {
-      hash = 'home';
-      target = document.getElementById('home');
-    }
-
-    document.querySelectorAll('section.active').forEach(sec => {
-      sec.classList.remove('active');
-      sec.querySelectorAll('.fade-in.visible').forEach(el => el.classList.remove('visible'));
-    });
-
-    target.classList.add('active');
-    
-    // Trigger animations
-    setTimeout(() => {
-      target.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-    }, 50);
-
-    // Update Nav
-    document.querySelectorAll('nav ul a').forEach(link => {
-      link.classList.toggle('active', link.getAttribute('href') === '#' + hash);
-    });
-
-    const navMenu = document.getElementById('nav-menu');
-    if (navMenu) navMenu.classList.remove('show');
-    
-    window.scrollTo({ top: 0 });
-  }
-
-  // Media Tab Initialization
-  const mediaData = {
-    reports: [
-      { i: '📄', t: 'Weekly Report 24', d: 'June 15, 2026' },
-      { i: '📊', t: 'Membership Q2 2026', d: 'June 10, 2026' },
-      { i: '📰', t: 'Gauteng Summary', d: 'June 5, 2026' }
-    ],
-    images: [
-      { i: '🖼️', t: 'Youth Summit Gallery', d: 'May 30, 2026' },
-      { i: '📸', t: 'Soweto Outreach', d: 'May 18, 2026' },
-      { i: '🏞️', t: 'Pretoria Conference', d: 'April 22, 2026' }
-    ],
-    videos: [
-      { i: '🎬', t: 'Manifesto Highlights', d: 'May 1, 2026' },
-      { i: '🎥', t: 'Youth Day Address', d: 'June 16, 2026' },
-      { i: '▶️', t: 'Women in Leadership', d: 'March 8, 2026' }
-    ],
-    news: [
-      { i: '📢', t: 'New Structures', d: 'June 18, 2026' },
-      { i: '🔔', t: 'Portal Open', d: 'June 12, 2026' },
-      { i: '📣', t: 'Targets Exceeded', d: 'June 8, 2026' }
-    ]
-  };
-
-  function filterMedia(btn, type) {
-    if(btn) {
-      document.querySelectorAll('.media-tab').forEach(t => t.classList.remove('active'));
-      btn.classList.add('active');
-    }
-    const grid = document.getElementById('media-grid');
-    grid.innerHTML = mediaData[type].map(item => `
-      <div class="card-white overflow-hidden relative">
-        <div class="media-thumb font-head shadow-sm text-gold">${item.i}</div>
-        <div class="bg-white p-3 font-semibold text-dark text-sm p-4" style="padding:14px;">
-          ${item.t}<div class="text-xs mt-1" style="color:#888;font-size:11px;">${item.d}</div>
-        </div>
-      </div>
-    `).join('');
-  }
-
-  // Init
-  window.addEventListener('hashchange', navigate);
-  document.addEventListener('DOMContentLoaded', () => { 
-    navigate();
-    filterMedia(null, 'reports'); // Init media grid
-  });
-</script>
+<footer id="footer"></footer>
+<script src="shared.js"></script>
 </body>
 </html>

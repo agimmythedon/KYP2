@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>KYP – About Us</title>
+<link rel="stylesheet" href="style.css"/>
+<style>
+.about-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:56px;align-items:center;}
+.purple-card{background:var(--purple);border-radius:var(--radius);padding:38px;color:var(--white);}
+.purple-card h3{font-family:'Montserrat',sans-serif;font-weight:900;font-size:22px;color:var(--gold);margin-bottom:14px;}
+.purple-card p{font-size:14px;line-height:1.75;color:rgba(255,255,255,.85);margin-bottom:24px;}
+.values-row{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:10px;}
+.val{background:rgba(255,255,255,.08);border:1px solid rgba(212,175,55,.25);border-radius:8px;padding:14px 6px;text-align:center;}
+.val .vi{font-size:22px;display:block;margin-bottom:6px;}
+.val span{font-family:'Montserrat',sans-serif;font-weight:700;font-size:9px;text-transform:uppercase;letter-spacing:.5px;color:var(--gold);}
+
+.mvg{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px;}
+.mv-card{background:var(--white);border-radius:var(--radius);padding:30px 26px;box-shadow:var(--shadow);border-top:4px solid var(--gold);text-align:center;}
+.mv-card .ico{font-size:38px;margin-bottom:14px;}
+.mv-card h3{font-family:'Montserrat',sans-serif;font-weight:700;font-size:16px;color:var(--purple);margin-bottom:10px;}
+.mv-card p{font-size:13.5px;color:var(--muted);line-height:1.65;}
+
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.gitem{border-radius:var(--radius);overflow:hidden;aspect-ratio:4/3;background:linear-gradient(135deg,var(--purple),var(--purple2));display:flex;align-items:center;justify-content:center;font-size:40px;cursor:pointer;transition:transform .2s;}
+.gitem:hover{transform:scale(1.03);}
+
+@media(max-width:900px){
+  .about-grid{grid-template-columns:1fr;}
+  .values-row{grid-template-columns:repeat(3,1fr);}
+  .mvg{grid-template-columns:1fr;}
+  .gallery-grid{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+<nav class="navbar" id="navbar"></nav>
+
+<div class="page-hero">
+  <div class="eyebrow">About KYP</div>
+  <h1>Who We <span>Are</span></h1>
+  <p>A movement dedicated to empowering communities, building ethical leadership, and creating a better future for all South Africans.</p>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div class="fi">
+        <div class="section-hd">
+          <h2>Know Your Power</h2>
+          <div class="gold-line"></div>
+        </div>
+        <ul class="check-list" style="margin-bottom:32px;">
+          <li><div class="chk">✓</div>Who We Are</li>
+          <li><div class="chk">✓</div>Mission</li>
+          <li><div class="chk">✓</div>Vision</li>
+          <li><div class="chk">✓</div>Values</li>
+          <li><div class="chk">✓</div>Photo Gallery</li>
+        </ul>
+        <a href="membership.html" class="btn btn-purple">JOIN THE MOVEMENT</a>
+      </div>
+      <div class="purple-card fi">
+        <h3>About KYP</h3>
+        <p>Know Your Power (KYP) is a movement dedicated to empowering communities, building ethical leadership, and creating a better future for all South Africans. We believe every citizen has the power to shape their destiny and the destiny of their nation.</p>
+        <p>Founded on the principles of accountability, service, and unity, KYP works tirelessly across all nine provinces to ensure that every South African — regardless of background — has a voice and the tools to use it.</p>
+        <div class="values-row">
+          <div class="val"><span class="vi">🛡️</span><span>Accountability</span></div>
+          <div class="val"><span class="vi">🤝</span><span>Service</span></div>
+          <div class="val"><span class="vi">💪</span><span>Unity</span></div>
+          <div class="val"><span class="vi">⭐</span><span>Leadership</span></div>
+          <div class="val"><span class="vi">🌟</span><span>Empowerment</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="mvg">
+      <div class="mv-card fi">
+        <div class="ico">🎯</div>
+        <h3>Our Mission</h3>
+        <p>To empower every South African citizen with knowledge, tools, and representation — creating communities that are informed, engaged, and capable of demanding ethical leadership and real change.</p>
+      </div>
+      <div class="mv-card fi">
+        <div class="ico">👁️</div>
+        <h3>Our Vision</h3>
+        <p>A South Africa where every citizen knows their power, exercises their rights, and participates fully in a democratic society that delivers economic justice, safety, and opportunity for all.</p>
+      </div>
+      <div class="mv-card fi">
+        <div class="ico">⚖️</div>
+        <h3>Our Values</h3>
+        <p>Accountability in leadership, service to communities, unity across all cultures and backgrounds, ethical leadership at every level, and empowerment of every South African citizen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <div class="section-hd fi">
+      <h2>Photo Gallery</h2>
+      <div class="gold-line"></div>
+      <p>Moments from our campaigns, community projects, meetings, and youth programmes across South Africa.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gitem fi">🏛️</div>
+      <div class="gitem fi">🎤</div>
+      <div class="gitem fi">🤝</div>
+      <div class="gitem fi">👩‍💼</div>
+      <div class="gitem fi">🏘️</div>
+      <div class="gitem fi">🎓</div>
+      <div class="gitem fi">✊</div>
+      <div class="gitem fi">🌍</div>
+    </div>
+  </div>
+</section>
+
+<footer id="footer"></footer>
+<script src="shared.js"></script>
+</body>
+</html>
