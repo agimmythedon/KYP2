@@ -1,4 +1,4 @@
-/* shared.js – injects nav, footer, fade-in observer */
+/* shared.js – injects nav, footer, fade-in observer, Three.js background */
 
 const PAGES = [
   {href:'index.html',    label:'Home'},
@@ -82,8 +82,88 @@ function initFade(){
   document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
 }
 
+// =============================================
+// THREE.JS GOLD PARTICLES BACKGROUND
+// =============================================
+function initThreeBackground() {
+    // Only run once
+    if (document.querySelector('script[data-three-init]')) return;
+    
+    // Create importmap
+    const importMap = document.createElement('script');
+    importMap.setAttribute('data-three-init', 'true');
+    importMap.type = 'importmap';
+    importMap.innerHTML = JSON.stringify({
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.184.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.184.0/examples/jsm/"
+        }
+    });
+    document.head.prepend(importMap);
+    
+    // Create the Three.js script
+    const script = document.createElement('script');
+    script.type = 'module';
+    script.textContent = `
+        import * as THREE from 'three';
+        
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.domElement.style.position = 'fixed';
+        renderer.domElement.style.top = '0';
+        renderer.domElement.style.left = '0';
+        renderer.domElement.style.pointerEvents = 'none';
+        renderer.domElement.style.zIndex = '0';
+        document.body.prepend(renderer.domElement);
+        
+        const particlesCount = 200;
+        const posArray = new Float32Array(particlesCount * 3);
+        for (let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 24;
+        }
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const material = new THREE.PointsMaterial({
+            color: 0xD4AF37,
+            size: 0.05,
+            transparent: true,
+            opacity: 0.35,
+            blending: THREE.AdditiveBlending,
+            sizeAttenuation: true
+        });
+        const particles = new THREE.Points(geometry, material);
+        scene.add(particles);
+        camera.position.z = 12;
+        
+        let mx = 0, my = 0;
+        document.addEventListener('mousemove', e => {
+            mx = (e.clientX / window.innerWidth) * 2 - 1;
+            my = -(e.clientY / window.innerHeight) * 2 + 1;
+        });
+        
+        function animate() {
+            requestAnimationFrame(animate);
+            particles.rotation.x += (my * 0.02 - particles.rotation.x) * 0.02;
+            particles.rotation.y += (mx * 0.02 - particles.rotation.y) * 0.02;
+            renderer.render(scene, camera);
+        }
+        animate();
+        
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    `;
+    document.body.appendChild(script);
+}
+
 document.addEventListener('DOMContentLoaded',()=>{
   buildNav();
   buildFooter();
   initFade();
+  initThreeBackground(); // Initialize Three.js background
 });

@@ -84,7 +84,7 @@
             <div class="lphoto">✊<div class="badge">President</div></div>
             <div class="linfo"><div class="lname">Thabo Nkosi</div><div class="lrole">President</div><div class="ldesc">Founding president with 20+ years in civic leadership and community development.</div></div>
           </div>
-          <div class="lcard fi" onclick="openModal('Nomvula Dlamini','Deputy President','👤','Nomvula Dlamini serves as Deputy President of Know Your Power. A seasoned political scientist and community organiser from KwaZulu-Natal, she brings deep expertise in policy development and grassroots mobilisation. She is a champion for women in leadership and has run multiple community safety initiatives.','Supports the President in executive duties, oversees policy development, chairs the Women's League, and manages inter-provincial coordination.','Coordinated the Women in Leadership Workshop in Cape Town · Launched the KYP Policy Working Group · Represented KYP at national civic forums')">
+          <div class="lcard fi" onclick="openModal('Nomvula Dlamini','Deputy President','👤','Nomvula Dlamini serves as Deputy President of Know Your Power. A seasoned political scientist and community organiser from KwaZulu-Natal, she brings deep expertise in policy development and grassroots mobilisation. She is a champion for women in leadership and has run multiple community safety initiatives.','Supports the President in executive duties, oversees policy development, chairs the Women\'s League, and manages inter-provincial coordination.','Coordinated the Women in Leadership Workshop in Cape Town · Launched the KYP Policy Working Group · Represented KYP at national civic forums')">
             <div class="lphoto">👤<div class="badge">Deputy President</div></div>
             <div class="linfo"><div class="lname">Nomvula Dlamini</div><div class="lrole">Deputy President</div><div class="ldesc">Policy expert and champion for women's leadership across South Africa.</div></div>
           </div>
@@ -169,5 +169,72 @@ function openModal(name,role,avatar,bio,resp,acts){
 }
 function closeModal(e){ if(e.target===document.getElementById('leaderModal')) document.getElementById('leaderModal').classList.remove('open'); }
 </script>
+
+<!-- ===== THREE.JS GOLD PARTICLES ===== -->
+<script type="importmap">
+{
+    "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.184.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.184.0/examples/jsm/"
+    }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.domElement.style.position = 'fixed';
+renderer.domElement.style.top = '0';
+renderer.domElement.style.left = '0';
+renderer.domElement.style.pointerEvents = 'none';
+renderer.domElement.style.zIndex = '0';
+document.body.prepend(renderer.domElement);
+
+const particlesCount = 200;
+const posArray = new Float32Array(particlesCount * 3);
+for (let i = 0; i < particlesCount * 3; i++) {
+    posArray[i] = (Math.random() - 0.5) * 24;
+}
+const geometry = new THREE.BufferGeometry();
+geometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+const material = new THREE.PointsMaterial({
+    color: 0xD4AF37,
+    size: 0.05,
+    transparent: true,
+    opacity: 0.35,
+    blending: THREE.AdditiveBlending,
+    sizeAttenuation: true
+});
+const particles = new THREE.Points(geometry, material);
+scene.add(particles);
+camera.position.z = 12;
+
+let mx = 0, my = 0;
+document.addEventListener('mousemove', e => {
+    mx = (e.clientX / window.innerWidth) * 2 - 1;
+    my = -(e.clientY / window.innerHeight) * 2 + 1;
+});
+
+function animate() {
+    requestAnimationFrame(animate);
+    particles.rotation.x += (my * 0.02 - particles.rotation.x) * 0.02;
+    particles.rotation.y += (mx * 0.02 - particles.rotation.y) * 0.02;
+    renderer.render(scene, camera);
+}
+animate();
+
+window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
+<!-- ===== END THREE.JS ===== -->
+
 </body>
 </html>

@@ -124,3 +124,67 @@ footer{background:var(--purple);color:var(--white);margin-top:auto;}
   .page-hero{padding:52px 20px 44px;}
   .section{padding:60px 0;}
 }
+
+/* =============================================
+   THREE.JS GOLD PARTICLES - STYLES
+   ============================================= */
+
+/* Ensure Three.js canvas is behind everything */
+canvas {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+}
+
+/* Make sure all content is above the particles */
+body > *:not(canvas) {
+    position: relative;
+    z-index: 1;
+}
+
+/* Navbar stays above particles */
+.navbar {
+    position: sticky;
+    z-index: 999 !important;
+}
+
+/* Footer stays above particles */
+footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* Hero sections stay above particles */
+.page-hero,
+.hero {
+    position: relative;
+    z-index: 1;
+}
+
+/* Sections stay above particles */
+.section {
+    position: relative;
+    z-index: 1;
+}
+
+/* Stats section stays above particles */
+.stats {
+    position: relative;
+    z-index: 1;
+}
+
+/* Modal stays above everything including particles */
+.modal-overlay {
+    z-index: 2000 !important;
+}
+
+/* On very small screens, reduce particle opacity slightly for better readability */
+@media (max-width: 480px) {
+    canvas {
+        opacity: 0.7;
+    }
+}
